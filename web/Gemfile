@@ -18,9 +18,16 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'compass-rails'
+  gem 'compass_twitter_bootstrap', :git => 'git://github.com/vwall/compass-twitter-bootstrap.git'
 end
 
 gem 'jquery-rails'
+
+gem 'simple_form', '~> 2.0.1'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -36,3 +43,9 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :development do
+	gem 'annotate', '~> 2.4.1.beta'
+	gem "rails-erd"
+	gem 'thin'
+end
