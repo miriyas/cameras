@@ -21,6 +21,10 @@ class Admin::CamerasController < ApplicationController
       end
     end
   end
+	
+  def new
+    @camera = Camera.new(params[:camera])
+  end
 
   def update
     @camera = Camera.find(params[:id])

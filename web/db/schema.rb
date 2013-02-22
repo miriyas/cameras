@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20130221102642) do
     t.string   "name1"
     t.string   "name2"
     t.string   "company"
-    t.string   "class"
+    t.string   "class_range"
     t.datetime "release_date"
     t.string   "sensor_type"
     t.string   "sensor_size"
