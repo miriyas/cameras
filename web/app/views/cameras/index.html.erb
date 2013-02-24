@@ -5,6 +5,14 @@
 	<p>v2.0</p>
 </div>
 
-<% @cameras.each do |camera| %>
-	<%= camera.name1 %>
+
+<% @cameras.each do |year, cameras| %>
+	<div class="year_group">
+		<p class="year"><%= year %></p>
+		<% cameras.each do |camera| %>
+			<div class="item">
+				<%= camera.name1 %>
+			</div>
+		<% end %>
+	</div>
 <% end %>

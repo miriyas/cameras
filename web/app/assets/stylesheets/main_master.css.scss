@@ -11,3 +11,14 @@
 		font-family: "NanumGothic", "Helvetica Neue", "Helvetica", dotum, applegothic, sans-serif;
 	}
 }
+
+.year_group {
+	.year {
+		text-align: center;
+	}
+	.item {
+		width: 220px;
+		margin: 10px;
+		float: left;
+	}
+}

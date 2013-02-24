@@ -3,7 +3,7 @@ class CamerasController < ApplicationController
 	layout "main"
 
   def index
-    @cameras = Camera.all
+    @cameras = Camera.all.group_by { |camera| camera.release_date.strftime("%Y") }
   end
 
   def show
