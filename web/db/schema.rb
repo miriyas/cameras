@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221102642) do
+ActiveRecord::Schema.define(:version => 20130224094133) do
 
   create_table "cameras", :force => true do |t|
     t.string   "name1"
@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(:version => 20130221102642) do
     t.integer  "sensor_pixel"
     t.string   "image_processor"
     t.string   "mirror_type"
-    t.string   "mirror_magnify"
-    t.string   "mirror_coverage"
+    t.float    "finder_magnify",   :limit => 255
+    t.integer  "finder_coverage",  :limit => 255
     t.string   "metering"
-    t.integer  "fps"
+    t.float    "fps"
     t.integer  "shutter_speed"
-    t.integer  "lcd_size"
+    t.float    "lcd_size"
     t.integer  "lcd_pixel"
     t.string   "lcd_type"
     t.integer  "af_points_total"
@@ -38,12 +38,12 @@ ActiveRecord::Schema.define(:version => 20130221102642) do
     t.integer  "iso_high"
     t.integer  "iso_low"
     t.boolean  "liveview"
-    t.integer  "shake_reduction"
+    t.boolean  "shake_reduction"
     t.integer  "video_resolution"
     t.integer  "video_fps"
     t.integer  "video_format"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end

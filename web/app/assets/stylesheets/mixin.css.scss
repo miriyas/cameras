@@ -1,0 +1,127 @@
+/* MIXIN - SPRITE */
+
+@mixin sprite_replace_text($sprite, $img-name){
+	@include hide_text;
+	background: sprite($sprite, $img-name) no-repeat;
+	width: image_width(sprite_file($sprite, $img-name));
+	height: image_height(sprite_file($sprite, $img-name));
+}
+
+@mixin sprite_replace_text_anchor($sprite, $img-name){
+	@include sprite_replace_text($sprite, $img-name);
+	&:hover {
+		background: sprite($sprite, $img-name + "_h") no-repeat;
+	}
+}
+
+@mixin sprite_replace_text_anchor_selected($sprite, $img-name){
+	@include sprite_replace_text_anchor($sprite, $img-name);
+	&.selected, &[data-selected="true"] {
+		background: sprite($sprite, $img-name + "_s") no-repeat;
+	}
+}
+
+
+/* MIXIN - LAYOUT */
+
+@mixin bootstrap_form_style {
+	$font_size:13px;
+	$label_width:80px;
+	.control-group {
+		padding:5px 0;
+		label {
+			font-size:$font-size;
+			width:$label_width;
+			@include float(left);
+			text-align:right;
+			color:#666;
+			margin-top:$font_size*0.75;
+			abbr {
+				color:#e80c0c;
+			}
+		}
+		.controls {
+			margin-left:$label_width + 15px;
+		}
+		.help-block {
+			color:#888;
+			font-size:11px;
+			line-height:130%;
+			margin-left:2px;
+			margin-top:2px;
+		}
+		&.string, &.password, &.email, &.text {
+			input, textarea {
+				border:1px solid #e3e3e3;
+				@include border_radius(4px);
+				font-size:$font_size;
+				color:$gray_1;
+				line-height:$font_size;
+				padding:$font_size*0.5 $font_size*0.75;
+				@include focus_highlight_input;
+			}
+			input {
+				width:320px;
+			}
+			textarea {
+				width:400px;
+			}
+		}
+		&.select, &.date {
+			select {
+				margin-top:$font_size*0.5;
+				border:1px solid #e3e3e3;
+				@include border_radius(4px);
+				font-size:$font_size;
+				color:$gray_2;
+				line-height:$font_size;
+//				padding:$font_size*0.75 $font_size*0.75;
+				@include focus_highlight_input;
+			}
+		}
+	}
+	.placeholder { color:#6b6b6b;}
+	::-webkit-input-placeholder, :-moz-placeholder {
+		color:#6b6b6b;
+	}
+	.form-actions {
+		margin-left:$label_width + 15px;
+		margin-top:25px;
+		&.left {
+			text-align:left;
+		}
+		.btn-save {
+			@include image_submit(submit_save);
+		}
+	}
+}
+
+@mixin nanum_font {
+	font-family: 'Calibri', nanumgothic, "Helvetica Neue", "Helvetica", dotum, applegothic, sans-serif;
+}
+
+
+
+///////////////////////////////////
+// fucking IE
+
+@mixin bg_opacity50p {
+	background: rgba(0, 0, 0, 0.5);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000)";
+}
+@mixin bg_opacity70p {
+	background: rgba(0, 0, 0, 0.7);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000)";
+}
+
+@mixin ie8_link_blocker {
+	@include opacity(0);
+	background-color:#000;
+	-ms-filter: "alpha(opacity:'1')";
+}				

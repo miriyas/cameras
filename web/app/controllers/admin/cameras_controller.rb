@@ -1,42 +1,39 @@
 class Admin::CamerasController < ApplicationController
 
+	layout "admin"
+
   def index
-    @cameras = Camera.all
+    @cameras = Camera.order('id DESC').page(params[:page]).per(30)
   end
+
 
   def show
     @camera = Camera.find(params[:id])
   end
 
-  def create
-    @camera = Camera.new(params[:camera])
 
-    respond_to do |format|
-      if @camera.save
-        format.html { redirect_to @camera, notice: 'Camera was successfully created.' }
-        format.json { render action: "show", handlers: :jbuilder }
-      else
-        format.html { render action: "new" }
-        format.json { render json: '', status: :unprocessable_entity }
-      end
-    end
-  end
-	
   def new
     @camera = Camera.new(params[:camera])
   end
+  def create
+    @camera = Camera.new(params[:camera])
 
-  def update
+    if @camera.save
+      redirect_to admin_cameras_path
+    else
+      render action: 'new'
+    end
+  end
+	
+  def edit
     @camera = Camera.find(params[:id])
-    
-    respond_to do |format|
-      if @camera.update_attributes(params[:post])
-        format.html { redirect_to @camera, notice: 'Camera was successfully updated.' }
-        format.json { render action: "show", handlers: :jbuilder }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: '', status: :unprocessable_entity }
-      end
+  end
+  def update
+    @camera = Camera.find(params[:id])    
+    if @camera.update_attributes(params[:camera])
+      redirect_to_back_or_default admin_cameras_path
+    else
+      render action: 'edit'
     end
   end
 
@@ -44,9 +41,6 @@ class Admin::CamerasController < ApplicationController
     @camera = Camera.find(params[:id])
     @camera.destroy
 
-    respond_to do |format|
-      format.html { redirect_to cameras_url }
-      format.json { head :no_content }
-    end
+    redirect_to_back_or_default admin_cameras_path
   end
 end
