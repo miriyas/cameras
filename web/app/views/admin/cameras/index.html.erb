@@ -28,7 +28,7 @@
       <td><%= image_tag(camera.image_url(:thumb)) if camera.image.present? %></td>
       <td>
 				<%= link_to(camera.name1, admin_camera_path(camera)) %><br>
-				<%= link_to(camera.name2, admin_camera_path(camera)) if camera.name3.present? %><br>
+				<%= link_to(camera.name2, admin_camera_path(camera)) if camera.name2.present? %><br>
 				<%= link_to(camera.name3, admin_camera_path(camera)) if camera.name3.present? %>
 			</td>
       <td>
