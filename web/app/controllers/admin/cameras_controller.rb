@@ -3,7 +3,7 @@ class Admin::CamerasController < ApplicationController
 	layout "admin"
 
   def index
-    @cameras = Camera.order('id DESC').page(params[:page]).per(30)
+    @cameras = Camera.order('id DESC').page(params[:page]).per(10)
   end
 
 
