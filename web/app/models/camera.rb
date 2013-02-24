@@ -13,7 +13,7 @@
 #  sensor_pixel     :integer
 #  image_processor  :string(255)
 #  mirror_type      :string(255)
-#  mirror_magnify   :string(255)
+#  mirror_magnify   :float
 #  mirror_coverage  :string(255)
 #  metering         :string(255)
 #  fps              :integer
@@ -36,7 +36,11 @@
 #
 
 class Camera < ActiveRecord::Base
-  attr_accessible :name1, :name2
+  attr_accessible :name1, :name2, :company, :class_range, :release_date, 
+	:sensor_type, :sensor_size, :sensor_pixel, :image_processor, :iso_high, :iso_low,
+	:mirror_type, :finder_magnify, :finder_coverage, :metering, :fps, :shutter_speed,
+	:af_points_total, :af_points_cross, :af_sensor, :shake_reduction,  
+	:lcd_size, :lcd_pixel, :lcd_type, :liveview, :video_resolution, :video_fps, :video_format
 
   # validates_presence_of :name1, :on => :create
 end

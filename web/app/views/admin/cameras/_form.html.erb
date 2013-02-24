@@ -1,0 +1,49 @@
+<%= simple_form_for [:admin, @camera] do |f| %>
+<%= hidden_field_tag :referer_url, request.env["HTTP_REFERER"] %>
+
+<%= f.input :name1 %>
+<%= f.input :name2 %>
+<%= f.input :company, :collection => [:Canon, :Nikon, :Pentax] %>
+<%= f.input :class_range, :collection => [:flagship, :entry, :midrange] %>
+<%= f.input :release_date, start_year: 1995, end_year: Date.today.year, discard_day: true, discard_hour: true %>
+
+<%= f.input :sensor_type, :collection => [:CMOS, :CCD, :"3 CCD"] %>
+<%= f.input :sensor_size, :collection => [:"FF", :"APS-H", :"APS-C"], :default => :"APS-C" %>
+<%= f.input :sensor_pixel %>
+<%= f.input :image_processor %>
+<%= f.input :iso_low %>
+<%= f.input :iso_high %>
+
+<%= f.input :mirror_type, :collection => [:"pentaprism", :"pentamirror"] %>
+<%= f.input :finder_magnify %>
+<%= f.input :finder_coverage %>
+<%= f.input :metering %>
+
+<%= f.input :fps %>
+<%= f.input :shutter_speed %>
+<%= f.input :af_points_total %>
+<%= f.input :af_points_cross %>
+<%= f.input :af_sensor %>
+
+<%= f.input :lcd_size %>
+<%= f.input :lcd_pixel %>
+<%= f.input :lcd_type, :collection => [:"normal", :"tilt"], :default => :"normal" %>
+
+<%= f.input :shake_reduction %>
+
+<%= f.input :liveview %>
+
+<%= f.input :video_resolution %>
+<%= f.input :video_fps %>
+<%= f.input :video_format %>
+
+	<hr>
+  <%#= f.input :status, :as => :select, :collection => %w(running pending), :include_blank => false %>
+
+
+	<hr>
+  <div class="actions">
+    <%= f.submit "Submit", :class => "btn btn-success" %>
+  </div>
+
+<% end %>

@@ -1,6 +1,82 @@
-ADMIN
+<%#= title "Cameras" %>
 
-<% @cameras.each do |camera| %>
-	<%= camera.name1 %>a
-<% end %>
-zz
+<ul class="breadcrumb">
+  <li class="active">Cameras</li>
+</ul>
+<h3 class="di">Total <%= content_tag :span, @cameras.count, :class => "font-important" %> Cameras.</h3>
+
+<table class="table table-condensed table-hover fs12">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name1<br>Name2</th>
+      <th>Company<br>Class<br>Release Date</th>
+      <th>SensorPixel<br>SensorType<br>SensorSize</th>
+      <th>Processor<br>ISO</th>
+      <th>MirrorType<br>ViewFinder<br>Metering</th>
+			<th>FPS<br>Shutter</th>
+      <th>AF Sensor<br>AF Points<br>SR</th>
+      <th>LCD<br>LiveView</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @cameras.each do |camera| %>
+    <tr>
+      <td><%= camera.id %></td>
+      <td>
+				<%= link_to camera.name1, admin_camera_path(camera) %><br>
+				<%= link_to camera.name2, admin_camera_path(camera) %>
+			</td>
+      <td>
+				<%= camera.company %><br>
+				<%= camera.class_range %><br>
+				<%= camera.release_date.strftime("%Y/%m") %>
+			</td>
+      <td>
+				<%= camera.sensor_pixel %><br>
+				<%= camera.sensor_type %><br>
+				<%= camera.sensor_size %>
+			</td>
+			<td>
+				<%= camera.image_processor %><br>
+				<%= camera.iso_low %>-<%= camera.iso_high %>
+			</td>
+      <td>
+				<%= camera.mirror_type %><br>
+				<%= camera.finder_coverage %>%, <%= camera.finder_magnify %>X<br>
+				<%= camera.metering %>
+			</td>
+      <td>
+				<%= camera.fps %><br>
+				1/<%= camera.shutter_speed %>sec
+			</td>
+      <td>
+				<%= camera.af_sensor %><br>
+				<%= camera.af_points_total %>p, <%= camera.af_points_cross %>cross<br>
+				<%= camera.shake_reduction %>
+			</td>
+      <td>
+				LCD <%= camera.lcd_size %>"<br>
+				<%= camera.lcd_pixel/1000 if camera.lcd_pixel.present? %>K <%= camera.lcd_type unless camera.lcd_type == "normal" %><br>
+				<%= camera.liveview == true ? "YES" : "-" %>
+			</td>
+      <td><%= camera.video_resolution %><%= camera.video_fps %><%= camera.video_format %></td>
+      <td>
+        <%= link_to 'Edit', edit_admin_camera_path(camera), :class => "btn btn-mini btn-warning" %>
+        <%= link_to 'Delete', admin_camera_path(camera), :method => :delete, :confirm => 'Sure?', :class => "btn btn-mini btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @cameras, :theme => 'twitter-bootstrap' %>
+
+<div class="toolbox">
+  <div class="pull-right">
+    <%= link_to new_admin_camera_path, :class => "btn btn-success" do %>
+      <i class="icon-plus icon-white"></i> Add New Camera
+    <% end %>
+  </div>
+</div>
