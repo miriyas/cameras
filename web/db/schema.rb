@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224094133) do
+ActiveRecord::Schema.define(:version => 20130224123400) do
 
   create_table "cameras", :force => true do |t|
     t.string   "name1"
     t.string   "name2"
     t.string   "company"
     t.string   "class_range"
-    t.datetime "release_date"
+    t.date     "release_date"
     t.string   "sensor_type"
     t.string   "sensor_size"
     t.integer  "sensor_pixel"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20130224094133) do
     t.integer  "video_format"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "image"
   end
 
 end

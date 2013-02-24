@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Image</th>
       <th>Name1<br>Name2</th>
       <th>Company<br>Class<br>Release Date</th>
       <th>SensorPixel<br>SensorType<br>SensorSize</th>
@@ -24,6 +25,7 @@
 		<% @cameras.each do |camera| %>
     <tr>
       <td><%= camera.id %></td>
+      <td><%= image_tag(camera.image_url(:thumb)) if camera.image.present? %></td>
       <td>
 				<%= link_to camera.name1, admin_camera_path(camera) %><br>
 				<%= link_to camera.name2, admin_camera_path(camera) %>
@@ -33,32 +35,35 @@
 				<%= camera.class_range %><br>
 				<%= camera.release_date.strftime("%Y/%m") %>
 			</td>
-      <td>
-				<%= camera.sensor_pixel %><br>
+      <td>	
+				<%= camera.sensor_pixel.present? ? "#{camera.sensor_pixel.to_f/100}M" : "" %><br>
 				<%= camera.sensor_type %><br>
 				<%= camera.sensor_size %>
 			</td>
 			<td>
 				<%= camera.image_processor %><br>
-				<%= camera.iso_low %>-<%= camera.iso_high %>
+				<%= camera.iso_low.present? ? camera.iso_low : "?" %> ~ 
+				<%= camera.iso_high.present? ? camera.iso_high : "?" %>
 			</td>
       <td>
 				<%= camera.mirror_type %><br>
-				<%= camera.finder_coverage %>%, <%= camera.finder_magnify %>X<br>
+				<%= camera.finder_coverage.present? ? "#{camera.finder_coverage}%, " : "" %>
+				<%= camera.finder_magnify.present? ? "#{camera.finder_magnify}X" : "" %><br>
 				<%= camera.metering %>
 			</td>
       <td>
-				<%= camera.fps %><br>
+				<%= camera.fps.present? ? "#{camera.fps}fps" : "" %><br>
 				1/<%= camera.shutter_speed %>sec
 			</td>
       <td>
 				<%= camera.af_sensor %><br>
-				<%= camera.af_points_total %>p, <%= camera.af_points_cross %>cross<br>
-				<%= camera.shake_reduction %>
+				<%= camera.af_points_total.present? ? "#{camera.af_points_total}p" : "" %>
+				<%= camera.af_points_cross.present? ? ", #{camera.af_points_cross}cross" : "" %><br>
+				<%= camera.shake_reduction == true ? "YES" : "" %>
 			</td>
       <td>
-				LCD <%= camera.lcd_size %>"<br>
-				<%= camera.lcd_pixel/1000 if camera.lcd_pixel.present? %>K <%= camera.lcd_type unless camera.lcd_type == "normal" %><br>
+				<%= camera.lcd_size.present? ? "LCD #{camera.lcd_size}\"" : "NO LCD" %><br>
+				<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %><%= camera.lcd_type unless camera.lcd_type == "normal" %><br>
 				<%= camera.liveview == true ? "YES" : "-" %>
 			</td>
       <td><%= camera.video_resolution %><%= camera.video_fps %><%= camera.video_format %></td>
