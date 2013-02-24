@@ -4,36 +4,36 @@
 <%= f.input :image, :as => :file %>
 <br>
 <%= f.input :name1 %>
-<%= f.input :name2 %>
-<br>
 <%= f.input :company, :collection => [:Canon, :Nikon, :Pentax, :Sony, :Samsung, :Panasonic, :Olympus, :Minolta, :Kodak, :Leica] %>
 <%= f.input :class_range, :collection => [:flagship, :entry, :midrange] %>
-<%= f.input :release_date, start_year: 1995, end_year: Date.today.year, discard_month: true %>
+<%= f.input :release_date, start_year: 1995, end_year: Date.today.year, discard_month: true, discard_hour: true, discard_minute: true %>
 <br>
 <%= f.input :sensor_type, :collection => [:CMOS, :CCD, :"2 CCD", :"3 CCD"] %>
-<%= f.input :sensor_size, :collection => [:"FF", :"APS-H", :"APS-C", :"6.4x4.8mm"], :default => :"APS-C" %>
 <%= f.input :sensor_pixel %>
+<%= f.input :sensor_size, :collection => [:"FF", :"APS-H", :"APS-C", :"6.4x4.8mm"], :default => :"APS-C" %>
 <br>
-<%= f.input :image_processor %>
+<%= f.input :fps %>
+<%= f.input :shutter_speed %>
+<br>
+<%= f.input :metering %>
 <%= f.input :iso_low %>
 <%= f.input :iso_high %>
+<br>
+<%= f.input :af_sensor %>
+<%= f.input :af_points_total %>
+<%= f.input :af_points_cross %>
 <br>
 <%= f.input :mirror_type, :collection => [:"pentaprism", :"pentamirror"] %>
 <%= f.input :finder_magnify %>
 <%= f.input :finder_coverage %>
 <br>
-<%= f.input :metering %>
-<br>
-<%= f.input :fps %>
-<%= f.input :shutter_speed %>
-<br>
-<%= f.input :af_points_total %>
-<%= f.input :af_points_cross %>
-<%= f.input :af_sensor %>
-<br>
 <%= f.input :lcd_size %>
 <%= f.input :lcd_pixel %>
 <%= f.input :lcd_type, :collection => [:"normal", :"tilt"], :default => :"normal" %>
+
+
+<br>
+<%= f.input :image_processor %>
 <br>
 <%= f.input :shake_reduction, label_html: { :class => "di ml5" } %>
 <br>
