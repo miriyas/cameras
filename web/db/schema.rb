@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20130224094133) do
     t.integer  "sensor_pixel"
     t.string   "image_processor"
     t.string   "mirror_type"
-    t.float    "finder_magnify",   :limit => 255
-    t.integer  "finder_coverage",  :limit => 255
+    t.float    "finder_magnify"
+    t.integer  "finder_coverage"
     t.string   "metering"
     t.float    "fps"
     t.integer  "shutter_speed"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(:version => 20130224094133) do
     t.integer  "video_resolution"
     t.integer  "video_fps"
     t.integer  "video_format"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
 end
