@@ -10,7 +10,7 @@
     <tr>
       <th>ID</th>
       <th>Image</th>
-      <th>Name1<br>Name2</th>
+      <th>Name1<br>Name2<br>Name3</th>
       <th>Company<br>Class<br>Release Date</th>
       <th>SensorPixel<br>SensorType<br>SensorSize</th>
       <th>Processor<br>ISO</th>
@@ -27,8 +27,9 @@
       <td><%= camera.id %></td>
       <td><%= image_tag(camera.image_url(:thumb)) if camera.image.present? %></td>
       <td>
-				<%= link_to camera.name1, admin_camera_path(camera) %><br>
-				<%= link_to camera.name2, admin_camera_path(camera) %>
+				<%= link_to(camera.name1, admin_camera_path(camera)) %><br>
+				<%= link_to(camera.name2, admin_camera_path(camera)) if camera.name3.present? %><br>
+				<%= link_to(camera.name3, admin_camera_path(camera)) if camera.name3.present? %>
 			</td>
       <td>
 				<%= camera.company %><br>
@@ -79,7 +80,7 @@
 <%= paginate @cameras, :theme => 'twitter-bootstrap' %>
 
 <div class="toolbox">
-  <div class="pull-right">
+  <div class="pull-right mb10">
     <%= link_to new_admin_camera_path, :class => "btn btn-success" do %>
       <i class="icon-plus icon-white"></i> Add New Camera
     <% end %>

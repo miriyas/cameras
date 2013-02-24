@@ -36,7 +36,7 @@
 #
 
 class Camera < ActiveRecord::Base
-  attr_accessible :name1, :name2, :company, :class_range, :release_date, :image,
+  attr_accessible :name1, :name2, :name3, :company, :class_range, :release_date, :image,
 	:sensor_type, :sensor_size, :sensor_pixel, :image_processor, :iso_high, :iso_low,
 	:mirror_type, :finder_magnify, :finder_coverage, :metering, :fps, :shutter_speed,
 	:af_points_total, :af_points_cross, :af_sensor, :shake_reduction,  
