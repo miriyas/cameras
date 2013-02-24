@@ -1,5 +1,7 @@
 class CamerasController < ApplicationController
 
+	layout "main"
+
   def index
     @cameras = Camera.all
   end

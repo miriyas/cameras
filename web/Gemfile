@@ -50,4 +50,5 @@ group :development do
 	gem 'annotate'
 	gem "rails-erd"
 	gem 'thin'
+	gem "seed_dump", "~> 0.4.2"
 end

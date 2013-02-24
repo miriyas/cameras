@@ -1,0 +1,13 @@
+@import "compass";
+@import "compass/reset";
+@import "mixin";
+@import "compass_twitter_bootstrap";
+
+
+
+.header {
+	text-align: center;
+	h1 {
+		font-family: "NanumGothic", "Helvetica Neue", "Helvetica", dotum, applegothic, sans-serif;
+	}
+}
