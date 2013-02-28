@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224163202) do
+ActiveRecord::Schema.define(:version => 20130228174812) do
 
   create_table "cameras", :force => true do |t|
     t.string   "name1"
@@ -41,11 +41,13 @@ ActiveRecord::Schema.define(:version => 20130224163202) do
     t.boolean  "shake_reduction"
     t.integer  "video_resolution"
     t.integer  "video_fps"
-    t.integer  "video_format"
+    t.string   "video_format"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.string   "image"
     t.string   "name3"
+    t.string   "video_scanning"
+    t.text     "more_info"
   end
 
 end

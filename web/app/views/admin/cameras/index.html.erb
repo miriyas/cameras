@@ -24,13 +24,13 @@
   <tbody>
 		<% @cameras.each do |camera| %>
     <tr>
-      <td><%= camera.id %></td>
-      <td><%= image_tag(camera.image_url(:thumb)) if camera.image.present? %></td>
-      <td>
+      <td rowspan="2"><%= camera.id %></td>
+      <td rowspan="2">
 				<%= link_to(camera.name1, admin_camera_path(camera)) %><br>
 				<%= link_to(camera.name2, admin_camera_path(camera)) if camera.name2.present? %><br>
 				<%= link_to(camera.name3, admin_camera_path(camera)) if camera.name3.present? %>
 			</td>
+      <td><%= image_tag(camera.image_url(:thumb)) if camera.image.present? %></td>
       <td>
 				<%= camera.company %><br>
 				<%= camera.class_range %><br>
@@ -64,15 +64,26 @@
 			</td>
       <td>
 				<%= camera.lcd_size.present? ? "LCD #{camera.lcd_size}\"" : "NO LCD" %><br>
-				<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %><%= camera.lcd_type unless camera.lcd_type == "normal" %><br>
+				<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
+				<%= camera.lcd_type unless camera.lcd_type == "normal" %><br>
 				<%= camera.liveview == true ? "YES" : "-" %>
 			</td>
-      <td><%= camera.video_resolution %><%= camera.video_fps %><%= camera.video_format %></td>
       <td>
+				<%= camera.video_resolution.present? ? "#{camera.video_resolution}@" : "" %><%= camera.video_fps %><%= camera.video_scanning.present? ?
+					("p" if camera.video_scanning == "progressive") : ("i" if camera.video_scanning == "interlaced") %>
+				<br>
+				<%= camera.video_format %>
+			</td>
+      <td rowspan="2">
         <%= link_to 'Edit', edit_admin_camera_path(camera), :class => "btn btn-mini btn-warning" %>
         <%= link_to 'Delete', admin_camera_path(camera), :method => :delete, :confirm => 'Sure?', :class => "btn btn-mini btn-danger" %>
       </td>
     </tr>
+		<tr>
+			<td colspan="9">
+				<%= camera.more_info %>
+			</td>
+		</tr>
     <% end %>
   </tbody>
 </table>

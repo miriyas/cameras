@@ -40,8 +40,10 @@
 <br>
 <%= f.input :video_resolution %>
 <%= f.input :video_fps %>
+<%= f.input :video_scanning, :collection => [:progressive, :interlaced] %>
 <%= f.input :video_format %>
 <br>
+<%= f.input :more_info %>
 <div class="actions">
 	<%= f.submit "Submit", :class => "btn btn-success" %>
 </div>
