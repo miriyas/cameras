@@ -4,17 +4,28 @@
 @import "compass_twitter_bootstrap";
 
 
+* {	font-family: "NanumGothic", "Helvetica Neue", "Helvetica", dotum, applegothic, sans-serif !important }
 
 .header {
 	text-align: center;
-	h1 {
-		font-family: "NanumGothic", "Helvetica Neue", "Helvetica", dotum, applegothic, sans-serif;
-	}
 }
 
 .year_group {
+	@include clearfix;
+	margin-bottom: 20px;
 	.year {
+		float: left;
+		background-color: white;
+		font-size: 18px;
+		font-weight: bold;
 		text-align: center;
+		margin-bottom: -12px;
+	}
+	hr {
+		width: 100%;
+		margin: 0px;
+		margin-bottom: 20px;
+		border-top: 2px solid #AAA;
 	}
 	.item {
 		width: 220px;

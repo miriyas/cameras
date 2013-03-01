@@ -51,4 +51,5 @@ group :development do
 	gem "rails-erd"
 	gem 'thin'
 	gem "seed_dump", "~> 0.4.2"
+	gem 'yaml_db'
 end

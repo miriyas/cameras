@@ -9,9 +9,11 @@
 <% @cameras.each do |year, cameras| %>
 	<div class="year_group">
 		<p class="year"><%= year %></p>
+		<hr>
 		<% cameras.each do |camera| %>
 			<div class="item">
-				<%= camera.name1 %>
+				<%= image_tag camera.image_url(:normal) %>
+				<%= camera.name1 %>/<%= camera.name2 %>/<%= camera.name3 %>
 			</div>
 		<% end %>
 	</div>
