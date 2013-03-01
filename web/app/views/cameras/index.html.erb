@@ -13,7 +13,31 @@
 		<% cameras.each do |camera| %>
 			<div class="item">
 				<%= image_tag camera.image_url(:normal) %>
-				<%= camera.name1 %>/<%= camera.name2 %>/<%= camera.name3 %>
+				<div class="item_desc">
+					<p class="name"><%= camera.name1 %><%= "/#{camera.name2}" if camera.name2? %><%= "/#{camera.name3}" if camera.name3? %></p>
+					<p>
+						<%= camera.sensor_pixel? ? "#{camera.sensor_pixel.to_f/100}M" : "" %>
+						<%= camera.sensor_type %>
+						<%= camera.sensor_size %>,
+						<%= camera.image_processor? ? "#{camera.image_processor}," : "" %>
+						<%= camera.fps.present? ? "#{number_with_precision(camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
+						<%= camera.shutter_speed? ? "1/#{camera.shutter_speed}sec" : "" %><br>
+						<%= camera.metering? ? "#{camera.metering}측광," : "" %>
+						<%= camera.iso_low? ? "ISO#{camera.iso_low}" : "ISO?" %>-<%= camera.iso_high? ? "#{camera.iso_high}," : "?," %>
+						<%= camera.af_sensor? ? "#{camera.af_sensor}" : "" %>
+						<%= camera.af_points_total? ? "#{camera.af_points_total}p" : "" %>
+						<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "AF" %><br>
+						<%= camera.mirror_type? ? ("펜타프리즘" if camera.mirror_type == "pentaprism") : ("펜타미러" if camera.mirror_type == "pentamirror") %>
+						<%= camera.finder_magnify? ? "x#{camera.finder_magnify}" : "" %><%= camera.finder_coverage? ? "/#{camera.finder_coverage}%" : "" %><%= camera.mirror_type? ? "," : "" %>
+						<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
+						<%= camera.lcd_size.present? ? "#{number_with_precision(camera.lcd_size, :precision => 1, :strip_insignificant_zeros => true)}\" LCD" : "NO LCD" %>
+						<%= camera.lcd_type unless camera.lcd_type == "normal" %><%= camera.liveview == true ? "LiveView" : "" %><br>
+						<%= camera.video_resolution.present? ? "#{camera.video_resolution}@" : "" %><%= camera.video_fps %><%= camera.video_scanning.present? ?
+							("p" if camera.video_scanning == "progressive") : ("i" if camera.video_scanning == "interlaced") %>
+						<%= camera.video_format %>
+						
+					</p>
+				</div>
 			</div>
 		<% end %>
 	</div>
