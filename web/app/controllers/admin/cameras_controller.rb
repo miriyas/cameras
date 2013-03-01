@@ -1,5 +1,7 @@
 class Admin::CamerasController < ApplicationController
 
+  before_filter :require_admin
+
 	layout "admin"
 
   def index
@@ -15,6 +17,7 @@ class Admin::CamerasController < ApplicationController
   def new
     @camera = Camera.new(params[:camera])
   end
+	
   def create
     @camera = Camera.new(params[:camera])
 

@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  name         :string(255)
+#  content_id   :integer
+#  content_type :string(255)
+#  body         :text
+#  user_ip      :string(255)
+#  password     :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  user_id: 1
+  body: MyText
+  user_ip: MyString
+  password: MyString
+
+two:
+  name: MyString
+  user_id: 1
+  body: MyText
+  user_ip: MyString
+  password: MyString

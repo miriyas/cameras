@@ -2,23 +2,23 @@
 #
 # Table name: cameras
 #
-#  id               :integer         not null, primary key
+#  id               :integer          not null, primary key
 #  name1            :string(255)
 #  name2            :string(255)
 #  company          :string(255)
 #  class_range      :string(255)
-#  release_date     :datetime
+#  release_date     :date
 #  sensor_type      :string(255)
 #  sensor_size      :string(255)
 #  sensor_pixel     :integer
 #  image_processor  :string(255)
 #  mirror_type      :string(255)
-#  mirror_magnify   :float
-#  mirror_coverage  :string(255)
+#  finder_magnify   :float
+#  finder_coverage  :integer
 #  metering         :string(255)
-#  fps              :integer
+#  fps              :float
 #  shutter_speed    :integer
-#  lcd_size         :integer
+#  lcd_size         :float
 #  lcd_pixel        :integer
 #  lcd_type         :string(255)
 #  af_points_total  :integer
@@ -27,12 +27,16 @@
 #  iso_high         :integer
 #  iso_low          :integer
 #  liveview         :boolean
-#  shake_reduction  :integer
+#  shake_reduction  :boolean
 #  video_resolution :integer
 #  video_fps        :integer
-#  video_format     :integer
-#  created_at       :datetime        not null
-#  updated_at       :datetime        not null
+#  video_format     :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  image            :string(255)
+#  name3            :string(255)
+#  video_scanning   :string(255)
+#  more_info        :text
 #
 
 class Camera < ActiveRecord::Base
@@ -44,6 +48,7 @@ class Camera < ActiveRecord::Base
 	:video_resolution, :video_fps, :video_format, :video_scanning
 
   mount_uploader :image, ImageUploader
+  has_many :comments, :as => :content, :dependent => :destroy
 
 
   # validates_presence_of :name1, :on => :create

@@ -4,6 +4,9 @@ class CamerasController < ApplicationController
 
   def index
     @cameras = Camera.all.group_by { |camera| camera.release_date.strftime("%Y") }
+		@comments = Comment.all
+		@comment = Comment.new
+		@user = User.new
   end
 
   def show

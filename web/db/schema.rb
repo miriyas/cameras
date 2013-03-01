@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228174812) do
+ActiveRecord::Schema.define(:version => 20130301153601) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.string   "provider",   :null => false
+    t.string   "uid",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "cameras", :force => true do |t|
     t.string   "name1"
@@ -49,5 +57,38 @@ ActiveRecord::Schema.define(:version => 20130228174812) do
     t.string   "video_scanning"
     t.text     "more_info"
   end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.text     "body"
+    t.string   "user_ip"
+    t.string   "password"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "comments", ["content_type", "content_id"], :name => "index_comments_on_content_type_and_content_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "name",                            :null => false
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "remember_me_token"
+    t.datetime "remember_me_token_expires_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
+    t.string   "role"
+    t.integer  "comments_count"
+  end
+
+  add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token"
 
 end
