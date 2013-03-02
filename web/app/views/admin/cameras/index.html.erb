@@ -70,7 +70,7 @@
 			</td>
       <td>
 				<%= camera.video_resolution.present? ? "#{camera.video_resolution}@" : "" %><%= camera.video_fps %><%= camera.video_scanning.present? ?
-					("p" if camera.video_scanning == "progressive") : ("i" if camera.video_scanning == "interlaced") %>
+					camera.video_scanning[0] : "" %>
 				<br>
 				<%= camera.video_format %>
 			</td>
