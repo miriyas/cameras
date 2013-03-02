@@ -33,7 +33,7 @@
 							<%= camera.lcd_size.present? ? "#{number_with_precision(camera.lcd_size, :precision => 1, :strip_insignificant_zeros => true)}\" LCD" : "NO LCD" %>
 							<%= camera.lcd_type unless camera.lcd_type == "normal" %><%= camera.liveview == true ? "LiveView" : "" %><br>
 							<%= camera.video_resolution.present? ? "#{camera.video_resolution}@" : "" %><%= camera.video_fps %><%= camera.video_scanning.present? ?
-								("p" if camera.video_scanning == "progressive") : ("i" if camera.video_scanning == "interlaced") %>
+								camera.video_scanning[0] : "" %>
 							<%= camera.video_format %>
 						</p>
 					</div>
