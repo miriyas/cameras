@@ -69,9 +69,10 @@
 				<%= camera.liveview == true ? "YES" : "-" %>
 			</td>
       <td>
-				<%= camera.video_resolution.present? ? "#{camera.video_resolution}@" : "" %><%= camera.video_fps %><%= camera.video_scanning.present? ?
-					camera.video_scanning[0] : "" %>
-				<br>
+				<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ?
+					camera.v1080scan[0] : "" %><br>
+				<%= camera.v720fps.present? ? "720@#{camera.v720fps}" : "" %><%= camera.v720scan.present? ?
+						camera.v720scan[0] : "" %><br>
 				<%= camera.video_format %>
 			</td>
       <td rowspan="2">

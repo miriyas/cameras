@@ -44,8 +44,8 @@ class Camera < ActiveRecord::Base
 	:sensor_type, :sensor_size, :sensor_pixel, :image_processor, :iso_high, :iso_low,
 	:mirror_type, :finder_magnify, :finder_coverage, :metering, :fps, :shutter_speed,
 	:af_points_total, :af_points_cross, :af_sensor, :shake_reduction,  
-	:lcd_size, :lcd_pixel, :lcd_type, :liveview, 
-	:video_resolution, :video_fps, :video_format, :video_scanning
+	:lcd_size, :lcd_pixel, :lcd_type, :liveview,
+	:v720fps, :v720scan, :v1080fps, :v1080scan, :video_format
 
   mount_uploader :image, ImageUploader
   has_many :comments, :as => :content, :dependent => :destroy

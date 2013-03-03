@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301153601) do
+ActiveRecord::Schema.define(:version => 20130303082914) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -47,15 +47,16 @@ ActiveRecord::Schema.define(:version => 20130301153601) do
     t.integer  "iso_low"
     t.boolean  "liveview"
     t.boolean  "shake_reduction"
-    t.integer  "video_resolution"
-    t.integer  "video_fps"
+    t.integer  "v720fps"
+    t.integer  "v1080fps"
     t.string   "video_format"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "image"
     t.string   "name3"
-    t.string   "video_scanning"
+    t.string   "v1080scan"
     t.text     "more_info"
+    t.string   "v720scan"
   end
 
   create_table "comments", :force => true do |t|

@@ -6,101 +6,13 @@
 </div>
 
 <div id="cameras">
-	<% @cameras.each do |year, cameras| %>
-		<div class="year_group">
-			<p class="year"><%= year %></p>
-			<hr>
-			<% cameras.each do |camera| %>
-				<div class="item">
-					<%= image_tag camera.image_url(:normal) %>
-					<div class="item_desc">
-						<p class="name"><%= camera.name1 %><%= "/#{camera.name2}" if camera.name2? %><%= "/#{camera.name3}" if camera.name3? %></p>
-						<p>
-							<%= camera.sensor_pixel? ? "#{camera.sensor_pixel.to_f/100}M" : "" %>
-							<%= camera.sensor_type %>
-							<%= camera.sensor_size %>,
-							<%= camera.image_processor? ? "#{camera.image_processor}," : "" %>
-							<%= camera.fps.present? ? "#{number_with_precision(camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
-							<%= camera.shutter_speed? ? "1/#{camera.shutter_speed}sec" : "" %><br>
-							<%= camera.metering? ? "#{camera.metering}측광," : "" %>
-							<%= camera.iso_low? ? "ISO#{camera.iso_low}" : "ISO?" %>-<%= camera.iso_high? ? "#{camera.iso_high}," : "?," %>
-							<%= camera.af_sensor? ? "#{camera.af_sensor}" : "" %>
-							<%= camera.af_points_total? ? "#{camera.af_points_total}p" : "" %>
-							<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "AF" %><br>
-							<%= camera.mirror_type? ? ("펜타프리즘" if camera.mirror_type == "pentaprism") : ("펜타미러" if camera.mirror_type == "pentamirror") %>
-							<%= camera.finder_magnify? ? "x#{camera.finder_magnify}" : "" %><%= camera.finder_coverage? ? "/#{camera.finder_coverage}%" : "" %><%= camera.mirror_type? ? "," : "" %>
-							<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
-							<%= camera.lcd_size.present? ? "#{number_with_precision(camera.lcd_size, :precision => 1, :strip_insignificant_zeros => true)}\" LCD" : "NO LCD" %>
-							<%= camera.lcd_type unless camera.lcd_type == "normal" %><%= camera.liveview == true ? "LiveView" : "" %><br>
-							<%= camera.video_resolution.present? ? "#{camera.video_resolution}@" : "" %><%= camera.video_fps %><%= camera.video_scanning.present? ?
-								camera.video_scanning[0] : "" %>
-							<%= camera.video_format %>
-						</p>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	<% end %>	
+	<%= render :partial => 'cameras' %>
 </div>
 
 <div id="comments">
-	<ul>
-		<% @comments.each do |comment| %>
-			<li class="comment <%= "admin" if comment.user.role == "admin" %>">
-				<div class="user"><%= comment.user.name %><br><p class="etc"><%= comment.user_ip %><br><%= time_ago_in_words(comment.created_at) %> 전</p></div>
-				<div class="body"><%= comment.body.gsub(/\n/, '<br/>').html_safe %></div>
-				<div class="control">
-					<%= link_to("삭제", comment_path(comment), :method => :delete, :confirm => 'Sure?') if comment.user == current_user %>
-				</div>
-			</li>
-		<% end %>
-	</ul>		
+	<%= render :partial => 'comments' %>
 </div>
 
-<div id="bottom" class="clearfix">
-	<% if logged_in? %>
-		<div class="new">
-			<%= simple_form_for [@comment], :defaults => { :label => false, :wrapper_html => { :class => 'di ml5' }}, :class => 'mb0' do |f| %>
-			<div class="name"><%= current_user.name %><br><%= link_to "로그아웃", logout_path, :class => "logout" %></div>
-			  <%= f.input :body, :placeholder => '내용', :input_html => { rows: 3 }, :wrapper_html => { class: 'body' }  %>
-			  <%= f.submit "입력하기", :class => "btn btn-success submit" %>
-			<% end %>		
-		</div>
-	<% else %>
-		<div class="user">
-			<p>늘어나는 회원수를 보며 뿌듯해하기 위해 간단한 회원제로 운영합니다.</p>
-			<p>댓글을 남기려면 로그인을 해주세요.</p>
-			<div class="login">
-				<% if alert = flash[:alert] %>
-				  <%= content_tag :div, alert, :class => "error" %>
-				<% end %>
-				<%= form_tag "login" do %>
-			    <%= text_field_tag :email, params[:email], :placeholder => '이메일', :class => "mb0" %>
-			    <%= password_field_tag :password, params[:password], :placeholder => '비밀번호', :class => "mb0" %>
-			    <%#= check_box_tag :remember_me, 1, params[:remember_me] %>
-					<%= submit_tag "로그인", :class => "btn btn-success" %>
-				<% end %>					
-			</div>	
-
-			<hr class="dashed">
-			<p>아직 회원이 아니라면, 진짜 귀찮겠지만 회원가입도 부탁드려요.</p>
-			<div class="signin">
-				<% if notice = flash[:notice] %>
-				  <%= content_tag :div, notice, :class => "error" %>
-				<% end %>
-				<%= simple_form_for [@user], :defaults => { :label => false, :wrapper_html => { :class => '' }}, :class => 'mb0' do |f| %>
-				<div class="">
-					<%= f.input :email, :placeholder => '이메일(로그인할때 씀)', :input_html => { class: 'w200', rows: 2 }, :wrapper_html => { :class => 'di' } %>		
-					<%= f.input :name, :placeholder => '별명(화면에 보임)', :input_html => { class: 'w200', rows: 2 }, :wrapper_html => { :class => 'di' } %>						
-				</div>
-				<div class="">
-					<%= f.input :password, :placeholder => '비밀번호', :input_html => { class: 'w200', rows: 2 }, :wrapper_html => { :class => 'di' } %>		
-			    <%= f.input :password_confirmation, :placeholder => '귀찮지만 비밀번호 한번 더', :input_html => { class: 'w200', rows: 2 }, :wrapper_html => { :class => 'di' } %>		
-						
-				</div>
-				  <%= f.submit "회원가입", :class => "btn btn-primary" %>
-				<% end %>
-			</div>
-		<% end %>
-	</div>
+<div id="footer" class="clearfix">
+	<%= render :partial => 'footer' %>
 </div>
