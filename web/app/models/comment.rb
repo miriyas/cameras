@@ -23,3 +23,5 @@ class Comment < ActiveRecord::Base
 	validates_length_of :body, :minimum => 1
 	
 end
+
+# rails g model link name:string url:string content:string

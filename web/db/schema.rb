@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303082914) do
+ActiveRecord::Schema.define(:version => 20130303133505) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130303082914) do
     t.string   "v1080scan"
     t.text     "more_info"
     t.string   "v720scan"
+    t.integer  "links_count"
   end
 
   create_table "comments", :force => true do |t|
@@ -72,6 +73,17 @@ ActiveRecord::Schema.define(:version => 20130303082914) do
   end
 
   add_index "comments", ["content_type", "content_id"], :name => "index_comments_on_content_type_and_content_id"
+
+  create_table "links", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "links", ["content_type", "content_id"], :name => "index_links_on_content_type_and_content_id"
 
   create_table "users", :force => true do |t|
     t.string   "name",                            :null => false

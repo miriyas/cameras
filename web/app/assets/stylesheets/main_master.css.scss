@@ -24,6 +24,10 @@ hr {
 	color: red;
 }
 
+.container {
+	width: auto !important;
+}
+
 .header {
 	text-align: center;
 	margin: 30px 0px;
@@ -40,6 +44,7 @@ hr {
 			font-weight: bold;
 			text-align: center;
 			margin-bottom: -12px;
+			margin-left: 10px;
 		}
 		.item {
 			width: 240px;
@@ -65,50 +70,58 @@ hr {
 
 #comments {
 	@include clearfix;
-	background-color: #f7f7f7;
 	ul {
-		margin: 0px;
+		margin: 0;
 	}
 	.comment {
 		@include clearfix;
 		border-top: 1px solid #d6d6d6;
+		background-color: #f7f7f7;
 		&.admin {
 			background-color: #fffff7;
 		}
-		.user {
-			float: left;
-			width: 120px;
-			text-align: center;
-			margin: 10px;
-			font-weight: bold;
-			.etc {
-				font-size: 11px;
-				color: #BBB;
-				line-height: 14px;
+		.centering {
+			width: 960px;
+			margin: 0 auto;
+			.user {
+				float: left;
+				width: 120px;
+				text-align: center;
+				margin: 10px;
+				font-weight: bold;
+				.etc {
+					font-size: 11px;
+					color: #BBB;
+					line-height: 14px;
+				}
 			}
-		}
-		.body {
-			float: left;
-			width: 650px;
-			padding: 10px;
-			line-height: 18px;
-			font-size: 12px;
-		}
-		.control {
-			width: 120px;
-			height: 70px;
-			float: left;
-			margin-top: 10px;
-			font-size: 12px;
-			text-decoration: underline;
+			.body {
+				float: left;
+				width: 650px;
+				padding: 10px;
+				line-height: 18px;
+				font-size: 12px;
+			}
+			.control {
+				width: 120px;
+				height: 70px;
+				float: left;
+				margin-top: 10px;
+				font-size: 12px;
+				text-decoration: underline;
+			}			
 		}
 	}
 }
 #footer {
+	width: 100%;
 	background-color: #eee;
 	border-top: 1px solid #d6d6d6;
 	padding: 10px 0px;
 	.new {
+		width: 960px;
+		margin: 0 auto;
+	
 		form {
 			margin: 0px;
 		}
@@ -218,8 +231,10 @@ hr {
 .tac { text-align: center }
 .tal { text-align: left }
 .tar { text-align: right }
+.ul { text-decoration: underline }
 
 .fcb { color: blue }
 .fcr { color: red }
 .fcy { color: yellow }
 .fcg { color: green }
+

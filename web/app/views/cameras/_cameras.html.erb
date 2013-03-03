@@ -30,6 +30,15 @@
 							"#{camera.v720scan[0]} /" : "" %>
 						<%= camera.video_format %><br>
 						<%= camera.more_info %>
+						<% camera.links.each do |link| %>
+							<% if link.name == "DPReview" %>
+								<span><%= link_to "DPR", link.url %></span>
+							<% elsif link.name == "Wikipedia" %>
+								<span><%= link_to "Wikip", link.url %></span>
+							<% else %>
+								<span><%= link_to "etc", link.url %></span>
+							<% end %>
+						<% end %>
 					</p>
 				</div>
 			</div>

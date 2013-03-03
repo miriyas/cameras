@@ -11,6 +11,10 @@ class Admin::CamerasController < ApplicationController
 
   def show
     @camera = Camera.find(params[:id])
+    @comments = @camera.comments
+		@comment = Comment.new
+    @links = @camera.links
+		@link = Link.new
   end
 
 
