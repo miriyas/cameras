@@ -1,0 +1,13 @@
+<ul>
+	<% @comments.each do |comment| %>
+		<li class="comment <%= "admin" if comment.user.role == "admin" %>">
+			<div class="centering">
+				<div class="user"><%= comment.user.name %><br><p class="etc"><%= comment.user_ip %><br><%= time_ago_in_words(comment.created_at) %> 전</p></div>
+				<div class="body"><%= comment.body.gsub(/\n/, '<br/>').html_safe %></div>
+				<div class="control">
+					<%= link_to("삭제", comment_path(comment), :method => :delete, :confirm => 'Sure?') if comment.user == current_user %>
+				</div>				
+			</div>
+		</li>
+	<% end %>
+</ul>		

@@ -19,6 +19,7 @@
       <th>AF Sensor<br>AF Points<br>SR</th>
       <th>LCD<br>LiveView</th>
       <th>Video</th>
+      <th>#links<br>#comments</th>
     </tr>
   </thead>
   <tbody>
@@ -30,7 +31,9 @@
 				<%= link_to(camera.name2, admin_camera_path(camera)) if camera.name2.present? %><br>
 				<%= link_to(camera.name3, admin_camera_path(camera)) if camera.name3.present? %>
 			</td>
-      <td><%= image_tag(camera.image_url(:thumb)) if camera.image.present? %></td>
+      <td>
+				<%= link_to(image_tag(camera.image_url(:thumb)), admin_camera_path(camera)) if camera.image.present? %>
+			</td>
       <td>
 				<%= camera.company %><br>
 				<%= camera.class_range %><br>
@@ -69,10 +72,15 @@
 				<%= camera.liveview == true ? "YES" : "-" %>
 			</td>
       <td>
-				<%= camera.video_resolution.present? ? "#{camera.video_resolution}@" : "" %><%= camera.video_fps %><%= camera.video_scanning.present? ?
-					camera.video_scanning[0] : "" %>
-				<br>
+				<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ?
+					camera.v1080scan[0] : "" %><br>
+				<%= camera.v720fps.present? ? "720@#{camera.v720fps}" : "" %><%= camera.v720scan.present? ?
+						camera.v720scan[0] : "" %><br>
 				<%= camera.video_format %>
+			</td>
+      <td>
+				<%#= camera.comments_count %>
+				<%= camera.links_count %>
 			</td>
       <td rowspan="2">
         <%= link_to 'Edit', edit_admin_camera_path(camera), :class => "btn btn-mini btn-warning" %>
@@ -82,9 +90,19 @@
 		<tr>
 			<td colspan="9">
 				<%= camera.more_info %>
+				<% camera.links.each do |link| %>
+					<% link.name.present? %>
+						<% if link.name == "DPReview" %>
+							<span><%= link_to "DPR", link.url %></span>
+						<% elsif link.name == "Wikipedia" %>
+							<span><%= link_to "Wikip", link.url %></span>
+						<% else %>
+							<span><%= link_to "etc", link.url %></span>
+						<% end %>
+					<% end %>
+		    <% end %>
 			</td>
 		</tr>
-    <% end %>
   </tbody>
 </table>
 

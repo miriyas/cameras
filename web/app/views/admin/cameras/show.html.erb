@@ -1,11 +1,88 @@
 <%#= title @camera.name1 %>
 
 <ul class="breadcrumb">
-  <li><%= link_to "Cameras", admin_cameras_path %> <span class="divider">></span></li>
-  <li class="active"><i class="icon-flag"></i><%= @camera.name1 %></li>
+  <li>
+		<%= link_to "Cameras", admin_cameras_path %> <span class="divider">></span>
+	</li>
+  <li class="active">
+		<i class="icon-camera"></i><%= @camera.name1 %><%= " / #{@camera.name2}" if @camera.name2? %><%= " / #{@camera.name3}" if @camera.name3? %>
+	</li>
 </ul>
 
 
-<div>
-  <%= @camera.name1 %>
+<div class="item_desc">
+	<p class="name"><%= @camera.name1 %><%= "/#{@camera.name2}" if @camera.name2? %><%= "/#{@camera.name3}" if @camera.name3? %></p>
+	<p>
+		<%= @camera.sensor_pixel? ? "#{@camera.sensor_pixel.to_f/100}M" : "" %>
+		<%= @camera.sensor_type %>
+		<%= @camera.sensor_size %>,
+		<%= @camera.image_processor? ? "#{@camera.image_processor}," : "" %>
+		<%= @camera.fps.present? ? "#{number_with_precision(@camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
+		<%= @camera.shutter_speed? ? "1/#{@camera.shutter_speed}sec" : "" %><br>
+		<%= @camera.metering? ? "#{@camera.metering}측광," : "" %>
+		<%= @camera.iso_low? ? "ISO#{@camera.iso_low}" : "ISO?" %>-<%= @camera.iso_high? ? "#{@camera.iso_high}," : "?," %>
+		<%= @camera.af_sensor? ? "#{@camera.af_sensor}" : "" %>
+		<%= @camera.af_points_total? ? "#{@camera.af_points_total}p" : "" %>
+		<%= @camera.af_points_cross? ? "/#{@camera.af_points_cross}c AF" : "AF" %><br>
+		<%= @camera.mirror_type? ? ("펜타프리즘" if @camera.mirror_type == "pentaprism") : ("펜타미러" if @camera.mirror_type == "pentamirror") %>
+		<%= @camera.finder_magnify? ? "x#{@camera.finder_magnify}" : "" %><%= @camera.finder_coverage? ? "/#{@camera.finder_coverage}%" : "" %><%= @camera.mirror_type? ? "," : "" %>
+		<%= @camera.lcd_pixel.present? ? "#{@camera.lcd_pixel/1000}K" : "" %>
+		<%= @camera.lcd_size.present? ? "#{number_with_precision(@camera.lcd_size, :precision => 1, :strip_insignificant_zeros => true)}\" LCD" : "NO LCD" %>
+		<%= @camera.lcd_type unless @camera.lcd_type == "normal" %><%= @camera.liveview == true ? "LiveView" : "" %><br>
+		<%= @camera.v1080fps.present? ? "1080@#{@camera.v1080fps}" : "" %><%= @camera.v1080scan.present? ?
+			"#{@camera.v1080scan[0]} /" : "" %>
+		<%= @camera.v720fps.present? ? "720@#{@camera.v720fps}" : "" %><%= @camera.v720scan.present? ?
+			"#{@camera.v720scan[0]} /" : "" %>
+		<%= @camera.video_format %><br>
+		<%= @camera.more_info %>
+		<% @camera.links.each do |link| %>
+			<% if link.name == "DPReview" %>
+				<span><%= link_to "DPR", link.url %></span>
+			<% elsif link.name == "Wikipedia" %>
+				<span><%= link_to "Wikip", link.url %></span>
+			<% else %>
+				<span><%= link_to "etc", link.url %></span>
+			<% end %>
+		<% end %>
+	</p>
+</div>
+
+<hr>
+<div class="comments">
+	<h4>Comments</h4>
+	<ul>
+		<% @comments.each do |comment| %>
+			<li class="comment <%= "admin" if comment.user.role == "admin" %>">
+				<div class="centering">
+					<div class="user"><%= comment.user.name %><br><p class="etc"><%= comment.user_ip %><br><%= time_ago_in_words(comment.created_at) %> 전</p></div>
+					<div class="body"><%= comment.body.gsub(/\n/, '<br/>').html_safe %></div>
+					<div class="control">
+						<%= link_to("삭제", comment_path(comment), :method => :delete, :confirm => 'Sure?') if comment.user == current_user %>
+					</div>				
+				</div>
+			</li>
+		<% end %>
+	</ul>
+</div>
+
+<hr>
+<div class="links">
+	<h4>Links</h4>
+	<dl>
+		<% @links.each do |link| %>
+			<dt class="name di mr10"><%= link.name %></dt>
+			<dd class="url di mr10"><%= link.url %></dd>
+			<%= link_to("삭제", admin_camera_link_path(@camera, link), :method => :delete, :confirm => 'Delete link, Sure?') %>
+		<% end %>
+	</dl>
+
+	<div class="new">
+		<%= simple_form_for [:admin, :camera, @link], :url => admin_camera_links_path(@camera, @link), :defaults => { :label => false }, :class => 'mb0' do |f| %>
+			<%= f.hidden_field :content_type, value: "Camera" %>
+			<%= f.hidden_field :content_id, value: @camera.id %>
+			<%= f.input :name, :placeholder => 'Name', :wrapper_html => { class: 'di' }, :input_html => { :class => "w200" } %>
+			<%= f.input :url, :placeholder => 'URL', :wrapper_html => { class: 'di' }, :input_html => { :class => "w300" } %>
+		  <%= f.submit "New Link", :class => "btn btn-success submit" %>
+		<% end %>		
+	</div>
 </div>
