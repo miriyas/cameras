@@ -4,7 +4,7 @@
 		<hr>
 		<% cameras.each do |camera| %>
 			<div class="item">
-				<%= image_tag camera.image_url(:normal) %>
+				<%= image_tag camera.image_url(:normal) if camera.image.present? %>
 				<div class="item_desc">
 					<p class="name"><%= camera.name1 %><%= "/#{camera.name2}" if camera.name2? %><%= "/#{camera.name3}" if camera.name3? %></p>
 					<p>
