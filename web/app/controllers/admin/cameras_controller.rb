@@ -5,8 +5,18 @@ class Admin::CamerasController < ApplicationController
 	layout "admin"
 
   def index
-    @cameras = Camera.order('id DESC').page(params[:page]).per(10)
-  end
+    s = Camera.search(params[:search]).order('id DESC').page(params[:page]).per(10)
+		if params[:company].present?
+			if params[:company] == "sony/minolta"
+				s = s.where("company LIKE 'sony' OR company LIKE 'minolta'") 
+			elsif params[:company] == "etc"
+				s = s.where("company LIKE 'leica' OR company LIKE 'fujifilm' OR company LIKE 'kodak'") 
+			else
+				s = s.where(company: params[:company]) 
+			end
+		end
+	  @cameras = s
+	end
 
 
   def show
