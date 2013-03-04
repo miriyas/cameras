@@ -114,4 +114,12 @@
       <i class="icon-plus icon-white"></i> Add New Camera
     <% end %>
   </div>
+	
+	<%= form_tag admin_cameras_path, :method => 'get', :class => "form-search pull-left" do %>
+	  <p>
+	    <%= text_field_tag :search, params[:search], :placeholder => "name", :class => "search-query w200 ml25" %>
+			<%= submit_tag "Search", :name => nil, :class => "btn" %>
+	  </p>
+	<% end %>
 </div>
+
