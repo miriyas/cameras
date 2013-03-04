@@ -73,6 +73,7 @@
 			<dt class="name di mr10"><%= link.name %></dt>
 			<dd class="url di mr10"><%= link.url %></dd>
 			<%= link_to("삭제", admin_camera_link_path(@camera, link), :method => :delete, :confirm => 'Delete link, Sure?') %>
+			<br>
 		<% end %>
 	</dl>
 
