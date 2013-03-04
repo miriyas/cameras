@@ -5,6 +5,18 @@
 </ul>
 <h3 class="di">Total <%= content_tag :span, Camera.count, :class => "font-important" %> Cameras.</h3>
 
+<%= navigation_tag :class => "nav nav-pills" do |m| %>
+  <%= m.item "All", admin_cameras_path, :current => params[:company].blank? %>
+  <%= m.item "Canon", admin_cameras_path(company: "canon"), :current => params[:company] == "canon" %>
+  <%= m.item "Nikon", admin_cameras_path(company: "nikon"), :current => params[:company] == "nikon" %>
+  <%= m.item "Pentax", admin_cameras_path(company: "pentax"), :current => params[:company] == "pentax" %>
+  <%= m.item "Sony/Minolta", admin_cameras_path(company: "sony/minolta"), :current => params[:company] == "sony/minolta" %>
+  <%= m.item "Panasonic", admin_cameras_path(company: "panasonic"), :current => params[:company] == "panasonic" %>
+  <%= m.item "Olympus", admin_cameras_path(company: "olympus"), :current => params[:company] == "olympus" %>
+  <%= m.item "Samsung", admin_cameras_path(company: "samsung"), :current => params[:company] == "samsung" %>
+  <%= m.item "etc.", admin_cameras_path(company: "etc"), :current => params[:company] == "etc" %>
+<% end %>
+
 <table class="table table-condensed table-hover fs12">
   <thead>
     <tr>
@@ -88,7 +100,7 @@
       </td>
     </tr>
 		<tr>
-			<td colspan="9">
+			<td colspan="10">
 				<%= camera.more_info %>
 				<% camera.links.each do |link| %>
 					<% link.name.present? %>
