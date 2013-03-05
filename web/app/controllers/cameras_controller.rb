@@ -3,10 +3,10 @@ class CamerasController < ApplicationController
 	layout "main"
 
   def index
-    @cameras = Camera.all.group_by { |camera| camera.release_date.strftime("%Y") }
+    @cameras 	= Camera.all.group_by { |camera| camera.release_date.strftime("%Y") }.sort {|a, b| a[0] <=> b[0] }
 		@comments = Comment.all
-		@comment = Comment.new
-		@user = User.new
+		@comment 	= Comment.new
+		@user 		= User.new
   end
 
   def show
