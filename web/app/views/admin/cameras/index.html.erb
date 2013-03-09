@@ -35,7 +35,7 @@
       <th>SensorPixel<br>SensorType<br>SensorSize</th>
       <th>Processor<br>ISO</th>
       <th>MirrorType<br>ViewFinder<br>Metering</th>
-			<th>FPS<br>Shutter<br>Storage</th>
+			<th>FPS<br>Shutter<br>Storage<br>Power</th>
       <th>AF Sensor<br>AF Points<br>SR</th>
       <th>LCD<br>LiveView</th>
       <th>Video</th>
@@ -79,7 +79,8 @@
       <td>
 				<%= camera.fps.present? ? "#{camera.fps}fps" : "" %><br>
 				1/<%= camera.shutter_speed %>sec<br>
-				<%= camera.storage %>
+				<%= camera.storage %><br>
+				<%= camera.power %>
 			</td>
       <td>
 				<%= camera.af_sensor %><br>
@@ -101,10 +102,10 @@
 				<%= camera.video_format %>
 			</td>
 			<td>
-				W<%= camera.d_width %><br>
-				H<%= camera.d_height %><br>
-				D<%= camera.d_depth %><br>
-				<%= camera.weight %>g
+				W<%= number_with_precision(camera.d_width, :precision => 1, :strip_insignificant_zeros => true) %><br>
+				H<%= number_with_precision(camera.d_height, :precision => 1, :strip_insignificant_zeros => true) %><br>
+				D<%= number_with_precision(camera.d_depth, :precision => 1, :strip_insignificant_zeros => true) %><br>
+				<%= number_with_precision(camera.weight, :precision => 1, :strip_insignificant_zeros => true) %>g
 			</td>
       <td>
 				<%#= camera.comments_count %>

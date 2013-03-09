@@ -19,7 +19,7 @@
 						<%= camera.af_sensor? ? "#{camera.af_sensor}" : "" %>
 						<%= camera.af_points_total? ? "#{camera.af_points_total}p" : "" %>
 						<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "AF" %><br>
-						<%= "#{camera.mount} mount" if camera.mount? %>
+						<%= "#{camera.mount} mount " if camera.mount? %><%= camera.power %>
 						<% 	if camera.mirror_type? && camera.mirror_type == "pentaprism"
 							 		concat "펜타프리즘"
 								elsif camera.mirror_type? && camera.mirror_type == "pentamirror"
@@ -31,10 +31,7 @@
 						<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
 						<%= camera.lcd_size.present? ? "#{number_with_precision(camera.lcd_size, :precision => 1, :strip_insignificant_zeros => true)}\" LCD" : "NO LCD" %>
 						<%= camera.lcd_type unless camera.lcd_type == "Normal" %><%= camera.liveview == true ? "LiveView " : " " %><%= camera.storage %><br>
-						<%= "#{camera.d_width}x" if camera.d_width? %>
-						<%= "#{camera.d_height}x" if camera.d_height?%>
-						<%= "#{camera.d_depth}/" if camera.d_depth? %>
-						<%= "#{camera.weight}g" if camera.weight? %><br>
+						<%= "#{number_with_precision(camera.d_width, :precision => 1, :strip_insignificant_zeros => true)}x" if camera.d_width? %><%= "#{number_with_precision(camera.d_height, :precision => 1, :strip_insignificant_zeros => true)}x" if camera.d_height? %><%= "#{number_with_precision(camera.d_depth, :precision => 1, :strip_insignificant_zeros => true)}/" if camera.d_depth? %><%= "#{number_with_precision(camera.weight, :precision => 1, :strip_insignificant_zeros => true)}g" if camera.weight? %><br>
 						<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ?
 							"#{camera.v1080scan[0]} /" : "" %>
 						<%= camera.v720fps.present? ? "720@#{camera.v720fps}" : "" %><%= camera.v720scan.present? ?
