@@ -93,18 +93,18 @@
 				<%= camera.lcd_type unless camera.lcd_type == "normal" %><br>
 				<%= camera.liveview == true ? "YES" : "-" %>
 			</td>
-			<td>
-				<%= camera.d_width %><br>
-				<%= camera.d_height %><br>
-				<%= camera.d_depth %><br>
-				<%= camera.weight %>
-			</td>
       <td>
 				<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ?
 					camera.v1080scan[0] : "" %><br>
 				<%= camera.v720fps.present? ? "720@#{camera.v720fps}" : "" %><%= camera.v720scan.present? ?
 						camera.v720scan[0] : "" %><br>
 				<%= camera.video_format %>
+			</td>
+			<td>
+				<%= camera.d_width %><br>
+				<%= camera.d_height %><br>
+				<%= camera.d_depth %><br>
+				<%= camera.weight %>
 			</td>
       <td>
 				<%#= camera.comments_count %>
@@ -116,7 +116,7 @@
       </td>
     </tr>
 		<tr>
-			<td colspan="10">
+			<td colspan="11">
 				<%= camera.more_info %>
 				<% camera.links.each do |link| %>
 					<% link.name.present? %>
