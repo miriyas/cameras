@@ -93,7 +93,7 @@
 				<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
 				<%= camera.lcd_type unless camera.lcd_type == "normal" %><br>
 				<%= camera.liveview == true ? "YES" : "-" %>
-				<%= camera.sealing == true ? ", 방진방습" %>
+				<%= camera.sealing == true ? ", 방진방습" : "" %>
 			</td>
       <td>
 				<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ?
