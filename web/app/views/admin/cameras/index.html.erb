@@ -40,7 +40,7 @@
       <th>LCD<br>LiveView</th>
       <th>Video</th>
       <th>Width<br>Height<br>Depth<br>Weight</th>
-      <th>#links<br>#comments</th>
+      <th>#links<br>#comments<br>status</th>
     </tr>
   </thead>
   <tbody>
@@ -110,6 +110,11 @@
       <td>
 				<%#= camera.comments_count %>
 				<%= camera.links_count %>
+				<% if camera.status == "pending" %> 
+					<span class="fcr">Need Data Confirm</span><br>
+				<% else %>
+					<%= camera.status %>
+				<% end %>
 			</td>
       <td rowspan="2">
         <%= link_to 'Edit', edit_admin_camera_path(camera), :class => "btn btn-mini btn-warning" %>
