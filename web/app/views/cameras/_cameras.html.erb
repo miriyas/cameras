@@ -19,7 +19,14 @@
 						<%= camera.af_sensor? ? "#{camera.af_sensor}" : "" %>
 						<%= camera.af_points_total? ? "#{camera.af_points_total}p" : "" %>
 						<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "AF" %><br>
-						<%= camera.mirror_type? ? ("펜타프리즘" if camera.mirror_type == "pentaprism") : ("펜타미러" if camera.mirror_type == "pentamirror") %>
+						<%= "#{camera.mount} mount" if camera.mount? %>
+						<% 	if camera.mirror_type? && camera.mirror_type == "pentaprism"
+							 		concat "펜타프리즘"
+								elsif camera.mirror_type? && camera.mirror_type == "pentamirror"
+									concat "펜타미러"
+								else
+									concat ""
+								end %>
 						<%= camera.finder_magnify? ? "x#{camera.finder_magnify}" : "" %><%= camera.finder_coverage? ? "/#{camera.finder_coverage}%" : "" %><%= camera.mirror_type? ? "," : "" %><br>
 						<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
 						<%= camera.lcd_size.present? ? "#{number_with_precision(camera.lcd_size, :precision => 1, :strip_insignificant_zeros => true)}\" LCD" : "NO LCD" %>
@@ -38,7 +45,7 @@
 							<% if link.name == "DPReview" %>
 								<span><%= link_to "DPR", link.url %></span>
 							<% elsif link.name == "Wikipedia" %>
-								<span><%= link_to "Wikip", link.url %></span>
+								<span><%= link_to "Wiki", link.url %></span>
 							<% else %>
 								<span><%= link_to "etc", link.url %></span>
 							<% end %>

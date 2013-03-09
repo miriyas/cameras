@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309145240) do
+ActiveRecord::Schema.define(:version => 20130309151130) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130309145240) do
     t.float    "d_width"
     t.float    "d_height"
     t.float    "d_depth"
+    t.string   "mount"
   end
 
   create_table "comments", :force => true do |t|
