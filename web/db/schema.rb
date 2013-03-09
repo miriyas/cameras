@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309142648) do
+ActiveRecord::Schema.define(:version => 20130309145240) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(:version => 20130309142648) do
     t.string   "v720scan"
     t.integer  "links_count"
     t.string   "storage"
-    t.integer  "weight"
-    t.integer  "d_width"
-    t.integer  "d_height"
-    t.integer  "d_depth"
+    t.float    "weight"
+    t.float    "d_width"
+    t.float    "d_height"
+    t.float    "d_depth"
   end
 
   create_table "comments", :force => true do |t|
