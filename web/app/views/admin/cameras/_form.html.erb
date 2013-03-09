@@ -1,57 +1,70 @@
 <%= simple_form_for [:admin, @camera] do |f| %>
 <%= hidden_field_tag :referer_url, request.env["HTTP_REFERER"] %>
+<table>
+	<tr>
+		<td>
+			<%= f.input :image, :as => :file %>
+			<%= f.input :name1 %>
+			<%= f.input :name2 %>
+			<%= f.input :name3 %>
+			<%= f.input :mount, :collection => [:"EF-s", :F, :K, :E, :"FT", :"mFT", :NX, :A, :N, :M, :M42] %>
+			<%= f.input :company, :collection => [:Canon, :Nikon, :Sony, :Pentax, :Samsung, :Panasonic, :Olympus, :Fujifilm, :Minolta, :Kodak, :Leica, :Sigma] %>
+			<%= f.input :class_range, :collection => [:flagship, :entry, :midrange] %>
+			<%= f.input :release_date, start_year: 1992, end_year: Date.today.year, discard_month: true, discard_hour: true, discard_minute: true %>
+		</td>
+		<td>
+			<%= f.input :sensor_size, :collection => [:"FF", :"APS-H", :"APS-C", :"6.4x4.8mm", :"18x12mm", :"645(44x33mm)"], :selected => :"APS-C" %>
+			<%= f.input :sensor_pixel %>
+			<%= f.input :sensor_type, :collection => [:CMOS, :CCD, :LBCAST, :"2 CCD", :"3 CCD"] %>
+			<%= f.input :image_processor %>
+			<br>
+			<%= f.input :fps %>
+			<%= f.input :shutter_speed %>
+			<br>
+			<%= f.input :metering %>
+			<%= f.input :iso_low %>
+			<%= f.input :iso_high %>
+		</td>
+		<td>
+			<%= f.input :af_sensor %>
+			<%= f.input :af_points_total %>
+			<%= f.input :af_points_cross %>
+			<br>
+			<%= f.input :mirror_type, :collection => [:"pentaprism", :"pentamirror", :"EVF"] %>
+			<%= f.input :finder_magnify %>
+			<%= f.input :finder_coverage %>
+			<br>
+			<%= f.input :lcd_size %>
+			<%= f.input :lcd_pixel %>
+			<%= f.input :lcd_type, :collection => [:"Normal", :"Tilt", :"Tilt & Swivel"] %>
+		</td>
+		<td>
+			<%= f.input :storage %>
+			<br>
+			<%= f.input :shake_reduction, label_html: { :class => "di ml5" } %>
+			<br>
+			<%= f.input :liveview, label_html: { :class => "di ml5" } %>
+			<br>
+			<%= f.input :v720fps %>
+			<%= f.input :v720scan, :collection => [:progressive, :interlaced] %>
+			<%= f.input :v1080fps %>
+			<%= f.input :v1080scan, :collection => [:progressive, :interlaced] %>
+			<%= f.input :video_format %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= f.input :d_width %>
+			<%= f.input :d_height %>
+			<%= f.input :d_depth %>
+			<%= f.input :weight %>
+		</td>
+		<td>
+			<%= f.input :more_info %>
+		</td>
+	</tr>
+</table>
 <br>
-<%= f.input :image, :as => :file %>
-<br>
-<%= f.input :name1 %>
-<%= f.input :name2 %>
-<%= f.input :name3 %>
-<%= f.input :mount, :collection => [:"EF-s", :F, :K, :E, :"FT", :"mFT", :NX, :A, :N, :M, :M42] %>
-<%= f.input :company, :collection => [:Canon, :Nikon, :Sony, :Pentax, :Samsung, :Panasonic, :Olympus, :Fujifilm, :Minolta, :Kodak, :Leica, :Sigma] %>
-<%= f.input :class_range, :collection => [:flagship, :entry, :midrange] %>
-<%= f.input :release_date, start_year: 1992, end_year: Date.today.year, discard_month: true, discard_hour: true, discard_minute: true %>
-<br>
-<%= f.input :sensor_size, :collection => [:"FF", :"APS-H", :"APS-C", :"6.4x4.8mm", :"18x12mm", :"645(44x33mm)"], :default => :"APS-C" %>
-<%= f.input :sensor_pixel %>
-<%= f.input :sensor_type, :collection => [:CMOS, :CCD, :LBCAST, :"2 CCD", :"3 CCD"] %>
-<%= f.input :image_processor %>
-<br>
-<%= f.input :fps %>
-<%= f.input :shutter_speed %>
-<br>
-<%= f.input :metering %>
-<%= f.input :iso_low %>
-<%= f.input :iso_high %>
-<br>
-<%= f.input :af_sensor %>
-<%= f.input :af_points_total %>
-<%= f.input :af_points_cross %>
-<br>
-<%= f.input :mirror_type, :collection => [:"pentaprism", :"pentamirror", :"EVF"] %>
-<%= f.input :finder_magnify %>
-<%= f.input :finder_coverage %>
-<br>
-<%= f.input :lcd_size %>
-<%= f.input :lcd_pixel %>
-<%= f.input :lcd_type, :collection => [:"Normal", :"Tilt", :"Tilt & Swivel"] %>
-<%= f.input :storage %>
-<br>
-<%= f.input :shake_reduction, label_html: { :class => "di ml5" } %>
-<br>
-<%= f.input :liveview, label_html: { :class => "di ml5" } %>
-<br>
-<%= f.input :v720fps %>
-<%= f.input :v720scan, :collection => [:progressive, :interlaced] %>
-<%= f.input :v1080fps %>
-<%= f.input :v1080scan, :collection => [:progressive, :interlaced] %>
-<%= f.input :video_format %>
-<br>
-<%= f.input :d_width %>
-<%= f.input :d_height %>
-<%= f.input :d_depth %>
-<%= f.input :weight %>
-<br>
-<%= f.input :more_info %>
 <div class="actions">
 	<%= f.submit "Submit", :class => "btn btn-success" %>
 </div>
