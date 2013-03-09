@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303133505) do
+ActiveRecord::Schema.define(:version => 20130309124936) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130303133505) do
     t.text     "more_info"
     t.string   "v720scan"
     t.integer  "links_count"
+    t.string   "storage"
   end
 
   create_table "comments", :force => true do |t|

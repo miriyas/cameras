@@ -3,9 +3,9 @@
 <ul class="breadcrumb">
   <li class="active">Cameras</li>
 </ul>
-<h3 class="di">Total <%= content_tag :span, Camera.count, :class => "font-important" %> Cameras.</h3>
+<h3 class="w100p">Total <%= content_tag :span, Camera.count, :class => "font-important" %> Cameras.</h3>
 
-<%= navigation_tag :class => "nav nav-pills" do |m| %>
+<%= navigation_tag :class => "nav nav-pills fl" do |m| %>
   <%= m.item "All", admin_cameras_path, :current => params[:company].blank? %>
   <%= m.item "Canon", admin_cameras_path(company: "canon"), :current => params[:company] == "canon" %>
   <%= m.item "Nikon", admin_cameras_path(company: "nikon"), :current => params[:company] == "nikon" %>
@@ -17,6 +17,14 @@
   <%= m.item "etc.", admin_cameras_path(company: "etc"), :current => params[:company] == "etc" %>
 <% end %>
 
+<%= form_tag admin_cameras_path, :method => 'get', :class => "form-search fr" do %>
+  <p>
+    <%= text_field_tag :search, params[:search], :placeholder => "name", :class => "search-query w200 ml25" %>
+		<%= submit_tag "Search", :name => nil, :class => "btn" %>
+  </p>
+<% end %>
+
+
 <table class="table table-condensed table-hover fs12">
   <thead>
     <tr>
@@ -27,7 +35,7 @@
       <th>SensorPixel<br>SensorType<br>SensorSize</th>
       <th>Processor<br>ISO</th>
       <th>MirrorType<br>ViewFinder<br>Metering</th>
-			<th>FPS<br>Shutter</th>
+			<th>FPS<br>Shutter<br>Storage</th>
       <th>AF Sensor<br>AF Points<br>SR</th>
       <th>LCD<br>LiveView</th>
       <th>Video</th>
@@ -69,7 +77,8 @@
 			</td>
       <td>
 				<%= camera.fps.present? ? "#{camera.fps}fps" : "" %><br>
-				1/<%= camera.shutter_speed %>sec
+				1/<%= camera.shutter_speed %>sec<br>
+				<%= camera.storage %>
 			</td>
       <td>
 				<%= camera.af_sensor %><br>
@@ -126,12 +135,5 @@
       <i class="icon-plus icon-white"></i> Add New Camera
     <% end %>
   </div>
-	
-	<%= form_tag admin_cameras_path, :method => 'get', :class => "form-search pull-left" do %>
-	  <p>
-	    <%= text_field_tag :search, params[:search], :placeholder => "name", :class => "search-query w200 ml25" %>
-			<%= submit_tag "Search", :name => nil, :class => "btn" %>
-	  </p>
-	<% end %>
 </div>
 
