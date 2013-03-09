@@ -45,6 +45,11 @@
 <%= f.input :v1080scan, :collection => [:progressive, :interlaced] %>
 <%= f.input :video_format %>
 <br>
+<%= f.input :d_width %>
+<%= f.input :d_height %>
+<%= f.input :d_depth %>
+<%= f.input :weight %>
+<br>
 <%= f.input :more_info %>
 <div class="actions">
 	<%= f.submit "Submit", :class => "btn btn-success" %>
