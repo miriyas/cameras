@@ -62,7 +62,7 @@
 		</td>
 		<td>
 			<%= f.input :status, :collection => [:running, :pending], :selected => :pending %>
-			<%= f.input :more_info %>
+			<%= f.input :more_info, input_html: { rows: 3 } %>
 		</td>
 	</tr>
 </table>
