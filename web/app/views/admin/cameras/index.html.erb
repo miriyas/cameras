@@ -35,8 +35,8 @@
       <th>SensorPixel<br>SensorType<br>SensorSize</th>
       <th>Processor<br>ISO</th>
       <th>MirrorType<br>ViewFinder<br>Metering</th>
-			<th>FPS<br>Shutter<br>Storage<br>Power</th>
-      <th>AF Sensor<br>AF Points<br>SR</th>
+			<th>FPS<br>Shutter<br>AF Sensor<br>AF Points</th>
+      <th>SR<br>Storage<br>Power<br>Sealing</th>
       <th>LCD<br>LiveView</th>
       <th>Video</th>
       <th>Width<br>Height<br>Depth<br>Weight</th>
@@ -79,20 +79,21 @@
       <td>
 				<%= camera.fps.present? ? "#{camera.fps}fps" : "" %><br>
 				1/<%= camera.shutter_speed %>sec<br>
-				<%= camera.storage %><br>
-				<%= camera.power %>
-			</td>
-      <td>
 				<%= camera.af_sensor %><br>
 				<%= camera.af_points_total.present? ? "#{camera.af_points_total}p" : "" %>
 				<%= camera.af_points_cross.present? ? ", #{camera.af_points_cross}cross" : "" %><br>
-				<%= camera.shake_reduction == true ? "YES" : "" %>
+			</td>
+      <td>
+				<%= camera.shake_reduction == true ? "YES" : "" %><br>
+				<%= camera.storage %><br>
+				<%= camera.power %>
 			</td>
       <td>
 				<%= camera.lcd_size.present? ? "LCD #{camera.lcd_size}\"" : "NO LCD" %><br>
 				<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
 				<%= camera.lcd_type unless camera.lcd_type == "normal" %><br>
 				<%= camera.liveview == true ? "YES" : "-" %>
+				<%= camera.sealing == true ? ", 방진방습" %>
 			</td>
       <td>
 				<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ?
@@ -129,7 +130,7 @@
 						<% if link.name == "DPReview" %>
 							<span><%= link_to "DPR", link.url %></span>
 						<% elsif link.name == "Wikipedia" %>
-							<span><%= link_to "Wikip", link.url %></span>
+							<span><%= link_to "Wiki", link.url %></span>
 						<% else %>
 							<span><%= link_to "etc", link.url %></span>
 						<% end %>

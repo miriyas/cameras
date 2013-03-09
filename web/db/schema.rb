@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309172521) do
+ActiveRecord::Schema.define(:version => 20130309182708) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20130309172521) do
     t.integer  "v720fps"
     t.integer  "v1080fps"
     t.string   "video_format"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "image"
     t.string   "name3"
     t.string   "v1080scan"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20130309172521) do
     t.string   "mount"
     t.string   "power"
     t.string   "status"
+    t.boolean  "sealing",         :default => false
   end
 
   create_table "comments", :force => true do |t|
