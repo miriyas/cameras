@@ -37,7 +37,12 @@ module ApplicationHelper
       end
 
       if options[:count].present?
-        caption = "#{caption} <span class=\"num_badge\">(#{Camera.where(company: caption).count})</span>".html_safe
+				if caption = "sony/minolta"
+					cc = Camera.where(company: "sony").count + Camera.where(company: "minolta").count					
+	        caption = "#{caption} <span class=\"num_badge\">(#{cc})</span>".html_safe
+				else
+	        caption = "#{caption} <span class=\"num_badge\">(#{Camera.where(company: caption).count})</span>".html_safe
+				end
       end      
       @items << [@template.link_to(caption, path, anchor_option), options]
       nil
