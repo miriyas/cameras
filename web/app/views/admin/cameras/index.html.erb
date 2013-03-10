@@ -92,9 +92,9 @@
       <td>
 				<%= camera.lcd_size.present? ? "LCD #{camera.lcd_size}\"" : "NO LCD" %><br>
 				<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
-				<% camera.lcd_type == "Tilt" %>
+				<% if camera.lcd_type == "Tilt" %>
 					<span class="fcg">Tilt</span>
-				<% camera.lcd_type == "Tilt & Swivel" %>
+				<% elsif camera.lcd_type == "Tilt & Swivel" %>
 					<span class="fcg">Tilt/Swivel</span>
 				<% end %>
 				<br>
@@ -130,7 +130,7 @@
 		<tr>
 			<td colspan="11">
 				<% camera.links.each do |link| %>
-					<% link.name.present? %>
+					<% if link.name.present? %>
 						<% if link.name == "DPReview" %>
 							<span><%= link_to "DPR", link.url %></span>
 						<% elsif link.name == "Wikipedia" %>
@@ -144,6 +144,7 @@
 		    <% end %>
 				<%= camera.more_info %>
 			</td>
+    <% end %>
 		</tr>
   </tbody>
 </table>
