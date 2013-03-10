@@ -3,6 +3,19 @@
 	<p>http://cameras.miriya.net</p>
 	<p>2013. 03. 04 / v2.1</p>
 	<p>이 페이지는 현재 지속적으로 개선이 진행중입니다.<br>문의사항, 수정사항, <span class="ul">찬양할 점</span>이 있으면 아래에 댓글로 남겨주세요.</p>
+	<div class="company">
+		<%= navigation_tag :class => "nav nav-pills fl" do |m| %>
+		  <%= m.item "All", cameras_path, :current => params[:company].blank? %>
+		  <%= m.item "Canon", cameras_path(company: "canon"), :current => params[:company] == "canon" %>
+		  <%= m.item "Nikon", cameras_path(company: "nikon"), :current => params[:company] == "nikon" %>
+		  <%= m.item "Pentax", cameras_path(company: "pentax"), :current => params[:company] == "pentax" %>
+		  <%= m.item "Sony/Minolta", cameras_path(company: "sony/minolta"), :current => params[:company] == "sony/minolta" %>
+		  <%= m.item "Panasonic", cameras_path(company: "panasonic"), :current => params[:company] == "panasonic" %>
+		  <%= m.item "Olympus", cameras_path(company: "olympus"), :current => params[:company] == "olympus" %>
+		  <%= m.item "Samsung", cameras_path(company: "samsung"), :current => params[:company] == "samsung" %>
+		  <%= m.item "etc.", cameras_path(company: "etc"), :current => params[:company] == "etc" %>
+		<% end %>
+	</div>
 </div>
 
 <div id="cameras">

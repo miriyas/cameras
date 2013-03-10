@@ -29,8 +29,13 @@ hr {
 }
 
 .header {
+	@include clearfix;
 	text-align: center;
 	margin: 30px 0px;
+	.company {
+		width: 660px;
+		margin: 0 auto;
+	}
 }
 
 #cameras {
