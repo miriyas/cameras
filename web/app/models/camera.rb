@@ -56,6 +56,10 @@ class Camera < ActiveRecord::Base
 
   validates_presence_of :name1, :on => :create
 
+  scope :of_running, where("status = 'running'")
+  scope :of_pending, where("status = 'pending'")
+
+
 	def self.search(search)
 		if search
 			where("name1 LIKE '%#{search}%' OR name2 LIKE '%#{search}%' OR name3 LIKE '%#{search}%'")

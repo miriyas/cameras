@@ -37,8 +37,7 @@ module ApplicationHelper
       end
 
       if options[:count].present?
-        model = caption.singularize.constantize
-        caption = "#{caption} <span class=\"num_badge\">#{model.count}</span>".html_safe
+        caption = "#{caption} <span class=\"num_badge\">(#{Camera.where(company: caption).count})</span>".html_safe
       end      
       @items << [@template.link_to(caption, path, anchor_option), options]
       nil

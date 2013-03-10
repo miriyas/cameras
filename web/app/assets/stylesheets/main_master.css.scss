@@ -32,8 +32,11 @@ hr {
 	@include clearfix;
 	text-align: center;
 	margin: 30px 0px;
+	.camera_count {
+		font-size: 16px;
+	}
 	.company {
-		width: 660px;
+		width: 900px;
 		margin: 0 auto;
 	}
 }
@@ -243,4 +246,3 @@ hr {
 .fcy { color: yellow }
 .fcg { color: green }
 .fcw { color: white }
-
