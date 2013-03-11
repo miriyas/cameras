@@ -13,7 +13,7 @@
 			<%= f.input :release_date, start_year: 1992, end_year: Date.today.year, discard_month: true, discard_hour: true, discard_minute: true %>
 		</td>
 		<td>
-			<%= f.input :sensor_size, :collection => [:"FF", :"APS-H", :"APS-C", :"6.4x4.8mm", :"18x12mm", :"645(44x33mm)"], :selected => :"APS-C" %>
+			<%= f.input :sensor_size, :collection => [:"APS-C", :"FF", :"APS-H", :"6.4x4.8mm", :"18x12mm", :"645(44x33mm)"] %>
 			<%= f.input :sensor_pixel %>
 			<%= f.input :sensor_type, :collection => [:CMOS, :CCD, :LBCAST, :"2 CCD", :"3 CCD"] %>
 			<%= f.input :image_processor %>
@@ -63,7 +63,7 @@
 			<%= f.input :weight %>
 		</td>
 		<td>
-			<%= f.input :status, :collection => [:running, :pending], :selected => :pending %>
+			<%= f.input :status, :collection => [:pending, :running] %>
 			<%= f.input :more_info, input_html: { rows: 3 } %>
 		</td>
 	</tr>
