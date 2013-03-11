@@ -63,7 +63,17 @@
       <td>	
 				<%= camera.sensor_pixel.present? ? "#{camera.sensor_pixel.to_f/100}M" : "" %><br>
 				<%= camera.sensor_type %><br>
-				<%= camera.sensor_size %>
+				<% if camera.sensor_size? %>
+					<% if camera.sensor_size == "FF" %>
+						<span class="fcb">FF</span>
+					<% elsif camera.sensor_size == "4/3" %>
+						<span class="fcg">4/3</span>
+					<% elsif camera.sensor_size == "APS-C" %>
+						<span>APS-C</span>
+					<% else %>
+						<span class="fcr"><%= camera.sensor_size %></span>
+					<% end %>
+				<% end %>
 			</td>
 			<td>
 				<%= camera.image_processor %><br>
