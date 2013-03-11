@@ -2,7 +2,7 @@
 
 <ul class="breadcrumb">
   <li>
-		<%= link_to "Cameras", admin_cameras_path %> <span class="divider">></span>
+		<%= link_to "Cameras", admin_root_path %> <span class="divider">></span>
 	</li>
   <li class="active">
 		<i class="icon-camera"></i><%= @camera.name1 %><%= " / #{@camera.name2}" if @camera.name2? %><%= " / #{@camera.name3}" if @camera.name3? %>

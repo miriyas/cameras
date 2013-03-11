@@ -7,15 +7,15 @@
 	<p class="camera_count">Total <%= Camera.of_running.count %> / <%= Camera.count %> Cameras</p>
 	<div class="company">
 		<%= navigation_tag :class => "nav nav-pills fl" do |m| %>
-		  <%= m.item "All", cameras_path, :current => params[:company].blank? %>
-		  <%= m.item "Canon", cameras_path(company: "canon"), :current => params[:company] == "canon", :count => true %>
-		  <%= m.item "Nikon", cameras_path(company: "nikon"), :current => params[:company] == "nikon", :count => true %>
-		  <%= m.item "Pentax", cameras_path(company: "pentax"), :current => params[:company] == "pentax", :count => true %>
-		  <%= m.item "Sony/Minolta", cameras_path(company: "sony/minolta"), :current => params[:company] == "sony/minolta", :count => true %>
-		  <%= m.item "Panasonic", cameras_path(company: "panasonic"), :current => params[:company] == "panasonic", :count => true %>
-		  <%= m.item "Olympus", cameras_path(company: "olympus"), :current => params[:company] == "olympus", :count => true %>
-		  <%= m.item "Samsung", cameras_path(company: "samsung"), :current => params[:company] == "samsung", :count => true %>
-		  <%= m.item "etc.", cameras_path(company: "etc"), :current => params[:company] == "etc", :count => true %>
+		  <%= m.item "All", root_path, :current => params[:company].blank? %>
+		  <%= m.item "Canon", root_path(company: "canon"), :current => params[:company] == "canon", :count => true %>
+		  <%= m.item "Nikon", root_path(company: "nikon"), :current => params[:company] == "nikon", :count => true %>
+		  <%= m.item "Pentax", root_path(company: "pentax"), :current => params[:company] == "pentax", :count => true %>
+		  <%= m.item "Sony/Minolta", root_path(company: "sony/minolta"), :current => params[:company] == "sony/minolta", :count => true %>
+		  <%= m.item "Panasonic", root_path(company: "panasonic"), :current => params[:company] == "panasonic", :count => true %>
+		  <%= m.item "Olympus", root_path(company: "olympus"), :current => params[:company] == "olympus", :count => true %>
+		  <%= m.item "Samsung", root_path(company: "samsung"), :current => params[:company] == "samsung", :count => true %>
+		  <%= m.item "etc.", root_path(company: "etc"), :current => params[:company] == "etc", :count => true %>
 		<% end %>
 	</div>
 </div>

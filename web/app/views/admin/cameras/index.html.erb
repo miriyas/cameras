@@ -6,18 +6,18 @@
 <h3 class="w100p">Total <%= content_tag :span, Camera.count, :class => "font-important" %> Cameras.</h3>
 
 <%= navigation_tag :class => "nav nav-pills fl" do |m| %>
-  <%= m.item "All", admin_cameras_path, :current => params[:company].blank? %>
-  <%= m.item "Canon", admin_cameras_path(company: "canon"), :current => params[:company] == "canon" %>
-  <%= m.item "Nikon", admin_cameras_path(company: "nikon"), :current => params[:company] == "nikon" %>
-  <%= m.item "Pentax", admin_cameras_path(company: "pentax"), :current => params[:company] == "pentax" %>
-  <%= m.item "Sony/Minolta", admin_cameras_path(company: "sony/minolta"), :current => params[:company] == "sony/minolta" %>
-  <%= m.item "Panasonic", admin_cameras_path(company: "panasonic"), :current => params[:company] == "panasonic" %>
-  <%= m.item "Olympus", admin_cameras_path(company: "olympus"), :current => params[:company] == "olympus" %>
-  <%= m.item "Samsung", admin_cameras_path(company: "samsung"), :current => params[:company] == "samsung" %>
-  <%= m.item "etc.", admin_cameras_path(company: "etc"), :current => params[:company] == "etc" %>
+  <%= m.item "All", admin_root_path, :current => params[:company].blank? %>
+  <%= m.item "Canon", admin_root_path(company: "canon"), :current => params[:company] == "canon" %>
+  <%= m.item "Nikon", admin_root_path(company: "nikon"), :current => params[:company] == "nikon" %>
+  <%= m.item "Pentax", admin_root_path(company: "pentax"), :current => params[:company] == "pentax" %>
+  <%= m.item "Sony/Minolta", admin_root_path(company: "sony/minolta"), :current => params[:company] == "sony/minolta" %>
+  <%= m.item "Panasonic", admin_root_path(company: "panasonic"), :current => params[:company] == "panasonic" %>
+  <%= m.item "Olympus", admin_root_path(company: "olympus"), :current => params[:company] == "olympus" %>
+  <%= m.item "Samsung", admin_root_path(company: "samsung"), :current => params[:company] == "samsung" %>
+  <%= m.item "etc.", admin_root_path(company: "etc"), :current => params[:company] == "etc" %>
 <% end %>
 
-<%= form_tag admin_cameras_path, :method => 'get', :class => "form-search fr" do %>
+<%= form_tag admin_root_path, :method => 'get', :class => "form-search fr" do %>
   <p>
     <%= text_field_tag :search, params[:search], :placeholder => "name", :class => "search-query w200 ml25" %>
 		<%= submit_tag "Search", :name => nil, :class => "btn" %>

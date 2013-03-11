@@ -39,7 +39,7 @@ class Admin::CamerasController < ApplicationController
     @camera = Camera.new(params[:camera])
 
     if @camera.save
-      redirect_to admin_cameras_path
+      redirect_to admin_root_path
     else
       render action: 'new'
     end
@@ -51,7 +51,7 @@ class Admin::CamerasController < ApplicationController
   def update
     @camera = Camera.find(params[:id])    
     if @camera.update_attributes(params[:camera])
-      redirect_to_back_or_default admin_cameras_path
+      redirect_to_back_or_default admin_root_path
     else
       render action: 'edit'
     end
@@ -61,6 +61,6 @@ class Admin::CamerasController < ApplicationController
     @camera = Camera.find(params[:id])
     @camera.destroy
 
-    redirect_to_back_or_default admin_cameras_path
+    redirect_to_back_or_default admin_root_path
   end
 end

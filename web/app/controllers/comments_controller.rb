@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 		end
 
 		@comment.save
-		redirect_to_back_or_default cameras_path
+		redirect_to_back_or_default root_path
   end
 	
   def update
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Comment was successfully updated.' }
         format.json { render action: 'show', handlers: :jbuilder }
       else
         format.html { render action: "edit" }

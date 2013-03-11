@@ -32,7 +32,7 @@ class CamerasController < ApplicationController
 
     respond_to do |format|
       if @camera.save
-        format.html { redirect_to @camera, notice: 'Camera was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Camera was successfully created.' }
         format.json { render action: "show", handlers: :jbuilder }
       else
         format.html { render action: "new" }
@@ -46,7 +46,7 @@ class CamerasController < ApplicationController
     
     respond_to do |format|
       if @camera.update_attributes(params[:post])
-        format.html { redirect_to @camera, notice: 'Camera was successfully updated.' }
+        format.html { redirect_to root_url, notice: 'Camera was successfully updated.' }
         format.json { render action: "show", handlers: :jbuilder }
       else
         format.html { render action: "edit" }
@@ -60,7 +60,7 @@ class CamerasController < ApplicationController
     @camera.destroy
 
     respond_to do |format|
-      format.html { redirect_to cameras_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
