@@ -10,7 +10,17 @@
 					<p>
 						<%= camera.sensor_pixel? ? "#{camera.sensor_pixel.to_f/100}M" : "" %>
 						<%= camera.sensor_type %>
-						<%= camera.sensor_size %>,
+						<% if camera.sensor_size? %>
+							<% if camera.sensor_size == "FF" %>
+								<span class="fcb">FF</span>
+							<% elsif camera.sensor_size == "4/3" %>
+								<span class="fcg">4/3</span>
+							<% elsif camera.sensor_size == "APS-C" %>
+								<span>APS-C</span>
+							<% else %>
+								<span class="fcr"><%= camera.sensor_size %></span>
+							<% end %>
+						<% end %>,
 						<%= camera.image_processor? ? "#{camera.image_processor}," : "" %>
 						<%= camera.fps.present? ? "#{number_with_precision(camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
 						<%= camera.shutter_speed? ? "1/#{camera.shutter_speed}sec" : "" %><br>
