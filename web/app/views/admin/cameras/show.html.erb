@@ -36,14 +36,20 @@
 		<%= @camera.video_format %><br>
 		<%= @camera.more_info %>
 		<% @camera.links.each do |link| %>
-			<% if link.name == "DPReview" %>
-				<span><%= link_to "DPR", link.url %></span>
-			<% elsif link.name == "Wikipedia" %>
-				<span><%= link_to "Wiki", link.url %></span>
-			<% else %>
-				<span><%= link_to "etc", link.url %></span>
+			<% if link.name.present? %>
+				<% if link.name == "DPReview" %>
+					<span><%= link_to "DPR", link.url %></span>
+				<% elsif link.name == "Wikipedia" %>
+					<span><%= link_to "Wiki", link.url %></span>
+				<% elsif link.name == "Imaging Resource" %>
+					<span><%= link_to "IR", link.url %></span>
+				<% elsif link.name == "Photography Blog" %>
+					<span><%= link_to "PB", link.url %></span>
+				<% else %>
+					<span><%= link_to "etc", link.url %></span>
+				<% end %>
 			<% end %>
-		<% end %>
+    <% end %>
 	</p>
 </div>
 
