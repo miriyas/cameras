@@ -4,7 +4,7 @@
 		<hr>
 		<% cameras.each do |camera| %>
 			<div class="item <%= "op50" if camera.status == "pending" %>">
-				<% if current_user.role = "admin" %>
+				<% if current_user.present? && current_user.role = "admin" %>
 					<%= link_to edit_admin_camera_path(camera) do %>
 						<%= camera.image.present? ? image_tag(camera.image_url(:normal)) : image_tag("noimage180.png")%>
 					<% end %>
