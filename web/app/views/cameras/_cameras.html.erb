@@ -3,7 +3,7 @@
 		<p class="year"><%= year %></p>
 		<hr>
 		<% cameras.each do |camera| %>
-			<div class="item">
+			<div class="item <%= "op50" if camera.status == "pending" %>">
 				<%= camera.image.present? ? image_tag(camera.image_url(:normal)) : image_tag("noimage180.png")%>
 				<div class="item_desc">
 					<p class="name"><%= camera.name1 %><%= "/#{camera.name2}" if camera.name2? %><%= "/#{camera.name3}" if camera.name3? %></p>
