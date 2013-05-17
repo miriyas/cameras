@@ -1,5 +1,7 @@
 class Admin::LinksController < ApplicationController
 
+  before_filter :require_admin
+
   def index
 		@links = Link.all
   end
