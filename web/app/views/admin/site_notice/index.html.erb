@@ -1,0 +1,10 @@
+<h3 class="w100p">사이트 현황</h3>
+<%= simple_form_for [:admin, @site_notice], url: admin_site_notice_path(@site_notice) do |f| %>
+	<%= hidden_field_tag :referer_url, request.env["HTTP_REFERER"] %>
+	<%= f.input :worked, input_html: { class: "w600 h100" } %>
+	<%= f.input :todo, input_html: { class: "w600 h100" } %>
+	<br>
+	<div class="actions">
+		<%= f.submit "확인", :class => "btn btn-success" %>
+	</div>
+<% end %>

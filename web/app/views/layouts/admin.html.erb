@@ -26,6 +26,7 @@
             <%= navigation_tag class: "nav" do |m| %>
               <%= m.item "카메라", admin_cameras_path, :current => current_controller?(["admin/cameras"]) %>
               <%= m.item "사용자", admin_users_path, :current => current_controller?(["admin/users"]) %>
+              <%= m.item "현황", admin_site_notice_index_path, :current => current_controller?(["admin/site_notice"]) %>
             <% end %>
 					</div>
         </div>

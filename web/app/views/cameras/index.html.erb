@@ -8,15 +8,13 @@
 			<td>
 				<ul>
 					<strong>현재 진척 상황</strong>
-					<li>- 미놀타/소니 : 전기종 입력 완료</li>
-					<li>- 캐논/파나/올림/라이카/시그마/후지/코닥/삼성 전기종 위치 표기 완료, 이미지 업로드 완료</li>
-					<li>- 니콘/펜탁스 : 전기종 위치 표시, 이름 표시 완료</li>
+					<li><%= nl2li(SiteNotice.last.worked) %></li>
 				</ul>
 			</td>
 			<td>
 				<ul>
 					<strong>조만간 할 일</strong>
-					<li>- 댓글에 페이징, 공지 기능 추가</li>
+					<li><%= nl2li(SiteNotice.last.todo) %></li>
 				</ul>
 			</td>
 		</tr>

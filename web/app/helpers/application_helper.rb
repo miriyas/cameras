@@ -5,6 +5,13 @@ module ApplicationHelper
 		return arr.join(".")
 	end
 	
+  def nl2br(str)
+    str.gsub("\n\r","<br>").gsub("\r", "").gsub("\n", "<br />").html_safe
+  end
+	
+  def nl2li(str)
+    str.gsub("\n\r","</li><li>").gsub("\r", "").gsub("\n", "</li><li>").html_safe
+  end
 	
   # Layout Helpers
   def title(page_title)

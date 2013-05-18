@@ -22,6 +22,7 @@ Cameras::Application.routes.draw do
 
 	  resources :sessions
 	  resources :users
+	  resources :site_notice
 
 	  resources :cameras do
 			resources :comments

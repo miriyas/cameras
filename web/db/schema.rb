@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309182708) do
+ActiveRecord::Schema.define(:version => 20130518035240) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -93,6 +93,13 @@ ActiveRecord::Schema.define(:version => 20130309182708) do
   end
 
   add_index "links", ["content_type", "content_id"], :name => "index_links_on_content_type_and_content_id"
+
+  create_table "site_notices", :force => true do |t|
+    t.text     "worked"
+    t.text     "todo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name",                            :null => false
