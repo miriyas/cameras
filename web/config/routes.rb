@@ -21,10 +21,12 @@ Cameras::Application.routes.draw do
     post "login" => "sessions#create"
 
 	  resources :sessions
+	  resources :users
+
 	  resources :cameras do
 			resources :comments
 			resources :links
-		end
+		end		
 	end
 	
 	root :to => 'cameras#index'

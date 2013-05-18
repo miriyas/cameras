@@ -1,0 +1,51 @@
+<%= title "사용자" %>
+
+<ul class="breadcrumb">
+  <li class="active">사용자</li>
+</ul>
+<h3 class="fl">총 <%= content_tag :span, User.count, :class => "font-important" %>명의 회원</h3>
+
+<%= form_tag admin_users_path, :method => 'get', :class => "form-search fr mt10" do %>
+  <p>
+    <%= text_field_tag :search, params[:search], :placeholder => "이름, 이메일", :class => "search-query w200 ml25" %>
+		<%= submit_tag "검색", :name => nil, :class => "btn" %>
+  </p>
+<% end %>
+
+
+<table class="table table-condensed table-hover fs12">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>권한</th>
+      <th>이름</th>
+      <th>이메일</th>
+      <th>가입일</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= content_tag :i, "", class: "icon-star" if user.role == "admin" %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.created_at %></td>
+      <td>
+        <%= link_to '수정', edit_admin_user_path(user), :class => "btn btn-mini btn-warning" %>
+        <%= link_to '삭제', admin_user_path(user), :method => :delete, :confirm => '정말 삭제하시겠습니까?', :class => "btn btn-mini btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users, :theme => 'twitter-bootstrap' %>
+
+<div class="toolbox">
+  <div class="pull-right mb10">
+    <%= link_to new_admin_user_path, :class => "btn btn-success" do %>
+      <i class="icon-plus icon-white"></i> 사용자 생성
+    <% end %>
+  </div>
+</div>

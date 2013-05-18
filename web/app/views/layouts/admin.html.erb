@@ -21,7 +21,13 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <%= link_to "Camera ADMIN", "/admin", :class => "brand" %>
+          <%= link_to "Cameras", "/", :class => "brand" %>
+          <div class="nav-collapse">
+            <%= navigation_tag class: "nav" do |m| %>
+              <%= m.item "카메라", admin_cameras_path, :current => current_controller?(["admin/cameras"]) %>
+              <%= m.item "사용자", admin_users_path, :current => current_controller?(["admin/users"]) %>
+            <% end %>
+					</div>
         </div>
       </div>
     </div>

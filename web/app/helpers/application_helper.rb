@@ -6,6 +6,98 @@ module ApplicationHelper
 	end
 	
 	
+  # Layout Helpers
+  def title(page_title)
+    content_for(:title, page_title.to_s)  
+  end
+  
+  def javascript(*args)
+    content_for(:javascripts) { javascript_include_tag(*args) }
+  end
+
+  def description(desc)
+    content_for(:description, desc.to_s)  
+  end
+
+  def fb_image(url)
+    content_for(:fb_image, FULL_URL(url))
+  end
+
+  def url_for_fb(url)
+    content_for(:url_for_fb, FULL_URL(url))
+  end
+
+
+  # for Facebook
+  def build_og_tags(obj)
+    url_for_fb(obj.share_url)
+    
+    if obj.class.to_s == "Trip"
+	    title(obj.title)
+      fb_image(obj.photo_url(:fb))
+    elsif obj.class.to_s == "Post"
+	    title(obj.trip.title)
+      fb_image(obj.photo_url(:normal))
+			description(obj.body)
+    end
+    
+  end
+	
+	
+	
+  #
+  # Current Path Helpers
+  #
+  
+  def current_path?(rhs)
+    if rhs
+      if rhs.is_a?(Array)
+        rhs.include?(request.path)
+      elsif rhs.is_a?(Regexp)
+        rhs.match(request.path) != nil
+      else
+        rhs == request.path
+      end
+    else
+      false
+    end
+  end
+
+
+
+  def current_controller?(rhs)
+    if rhs
+      if rhs.is_a?(Array)
+        rhs.include?(params[:controller])
+      elsif rhs.is_a?(Regexp)
+        rhs.match(params[:controller]) != nil
+      else
+        rhs == params[:controller]
+      end
+    else
+      false
+    end
+  end
+
+  def current_action?(rhs)
+    if rhs
+      if rhs.is_a?(Array)
+        rhs.include?(params[:action])
+      elsif rhs.is_a?(Regexp)
+        rhs.match(params[:action]) != nil
+      else
+        rhs == params[:action]
+      end
+    else
+      false
+    end
+  end
+
+
+
+  #
+  # Navigation Tag Helpers
+  #
 	
   def navigation_tag(options = {}, &block)
     b = NavigationBuilder.new(self, options)

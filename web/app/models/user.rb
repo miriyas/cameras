@@ -26,10 +26,19 @@ class User < ActiveRecord::Base
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
-  validates_presence_of :email
+  validates_presence_of :name, :email
   validates_uniqueness_of :email
 
   def admin?
     role == "admin"
   end
+
+	def self.search(search)
+		if search
+			where("name LIKE '%#{search}%' OR email LIKE '%#{search}%'")
+		else
+			self
+		end
+	end
+
 end

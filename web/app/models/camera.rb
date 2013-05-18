@@ -62,7 +62,7 @@ class Camera < ActiveRecord::Base
 
 	def self.search(search)
 		if search
-			where("name1 LIKE '%#{search}%' OR name2 LIKE '%#{search}%' OR name3 LIKE '%#{search}%'")
+			where("name1 LIKE '%#{search}%' OR name2 LIKE '%#{search}%' OR name3 LIKE '%#{search}%' OR company LIKE '%#{search}%'")
 		else
 			self
 		end
