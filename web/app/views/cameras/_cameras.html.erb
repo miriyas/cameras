@@ -12,7 +12,7 @@
 					<%= camera.image.present? ? image_tag(camera.image_url(:normal)) : image_tag("noimage180.png")%>
 				<% end %>
 				<div class="item_desc">
-					<p class="name"><%= camera.name1 %><%= " / #{camera.name2}" if camera.name2? %><%= " / #{camera.name3}" if camera.name3? %></p>
+					<p class="name"><%= camera.company %> <%= camera.name1 %><%= " / #{camera.name2}" if camera.name2? %><%= " / #{camera.name3}" if camera.name3? %></p>
 					<p>
 						<%= camera.sensor_pixel? ? "#{camera.sensor_pixel.to_f/100}M" : "" %>
 						<%= camera.sensor_type %>
@@ -40,6 +40,10 @@
 							 		concat "펜타프리즘"
 								elsif camera.mirror_type? && camera.mirror_type == "pentamirror"
 									concat "펜타미러"
+								elsif camera.mirror_type? && camera.mirror_type == "rangefinder"
+									concat "RF"
+								elsif camera.mirror_type? && camera.mirror_type == "porromirror"
+									concat "포로미러"
 								else
 									concat ""
 								end %>
@@ -56,7 +60,7 @@
 						<% if camera.status == "pending" %> 
 							<span class="fcr">Need Data Confirm</span><br>
 						<% end %>
-						<%= camera.more_info %>
+						<span class="fcg"><%= camera.more_info %></span>
 						<br>
 						<% camera.links.each do |link| %>
 							<% if link.name == "DPReview" %>
