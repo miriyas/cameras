@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130518035240) do
+ActiveRecord::Schema.define(:version => 20130817193248) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130518035240) do
     t.string   "power"
     t.string   "status"
     t.boolean  "sealing",         :default => false
+    t.string   "lcd_etc"
   end
 
   create_table "comments", :force => true do |t|

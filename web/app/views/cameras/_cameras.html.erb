@@ -17,7 +17,7 @@
 						<%= camera.sensor_pixel? ? "#{camera.sensor_pixel.to_f/100}M" : "" %>
 						<%= camera.sensor_type %>
 						<% if camera.sensor_size? %>
-							<% if camera.sensor_size == "FF" %>
+							<% if camera.sensor_size == "APS-H" || "FF" || "645(44x33mm)" || "S(45x30mm)" %>
 								<span class="fcb">FF</span>
 							<% elsif camera.sensor_size == "4/3" %>
 								<span class="fcg">4/3</span>
