@@ -30,14 +30,28 @@
 						<% end %>,
 						<%= camera.image_processor? ? "#{camera.image_processor}," : "" %>
 						<%= camera.fps.present? ? "#{number_with_precision(camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
-						<%= camera.shutter_speed? ? "1/#{camera.shutter_speed}sec" : "" %><br>
-						<%= camera.metering? ? "#{camera.metering}측광," : "" %>
+						<%= camera.shutter_speed? ? "1/#{camera.shutter_speed}sec" : "" %>
+						
+						<br>
+						
+						<%= camera.metering? ? "#{camera.metering}측광" : "" %>
+
+						<%= ", " if camera.metering.present? && (camera.iso_low.present? || camera.iso_high.present?) %>
+
 						<% unless camera.iso_low.blank? && camera.iso_high.blank? %>
-							<%= camera.iso_low? ? "ISO#{camera.iso_low}" : "ISO?" %>-<%= camera.iso_high? ? "#{camera.iso_high}," : "?," %>
+							<%= camera.iso_low? ? "ISO#{camera.iso_low}" : "ISO?" %>-<%= camera.iso_high? ? "#{camera.iso_high}," : "?" %>
 						<% end %>
+
+						<%= ", " if (camera.iso_low? || camera.iso_high?) && (camera.af_sensor? || camera.af_points_total? || camera.af_points_cross?) %>
+						
 						<%= camera.af_sensor? ? "#{camera.af_sensor}" : "" %>
 						<%= camera.af_points_total? ? "#{camera.af_points_total}p" : "" %>
-						<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "AF" %><br>
+						<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "" %>
+						
+						<%= " AF" if (camera.af_sensor? || camera.af_points_total? || camera.af_points_cross?) %>						
+						
+						<br>
+						
 						<%= "#{camera.mount} mount, " if camera.mount? %><%= camera.power %>
 						<% 	if camera.mirror_type? && camera.mirror_type == "pentaprism"
 							 		concat "펜타프리즘"
