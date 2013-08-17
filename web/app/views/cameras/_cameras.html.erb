@@ -18,14 +18,15 @@
 						<%= camera.sensor_type %>
 						<% if camera.sensor_size? %>
 							<% if camera.sensor_size == "APS-H" || "FF" || "645(44x33mm)" || "S(45x30mm)" %>
-								<span class="fcb">FF</span>
+								<span class="fcb">
 							<% elsif camera.sensor_size == "4/3" %>
-								<span class="fcg">4/3</span>
+								<span class="fcg">
 							<% elsif camera.sensor_size == "APS-C" %>
-								<span>APS-C</span>
+								<span>
 							<% else %>
-								<span class="fcr"><%= camera.sensor_size %></span>
+								<span class="fcr">
 							<% end %>
+							<%= camera.sensor_size %></span>
 						<% end %>,
 						<%= camera.image_processor? ? "#{camera.image_processor}," : "" %>
 						<%= camera.fps.present? ? "#{number_with_precision(camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
