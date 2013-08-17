@@ -59,7 +59,7 @@ class Camera < ActiveRecord::Base
   scope :of_running, where("status = 'running'")
   scope :of_pending, where("status = 'pending'")
 
-  SENSORS = {'APS-C', 'FF', 'APS-H', '4/3', '6.4x4.8mm', '18x12mm', '645(44x33mm)', 'S(45x30mm)', '20.5x16.4mm', '14x9.3mm', '13.8x9.2mm', '27.6x18.4'}
+  SENSORS = [:'APS-C', :'FF', :'APS-H', :'4/3', :'6.4x4.8mm', :'18x12mm', :'645(44x33mm)', :'S(45x30mm)', :'20.5x16.4mm', :'14x9.3mm', :'13.8x9.2mm', :'27.6x18.4']
 
 
 	def self.search(search)
