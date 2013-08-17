@@ -32,7 +32,9 @@
 						<%= camera.fps.present? ? "#{number_with_precision(camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
 						<%= camera.shutter_speed? ? "1/#{camera.shutter_speed}sec" : "" %><br>
 						<%= camera.metering? ? "#{camera.metering}측광," : "" %>
-						<%= camera.iso_low? ? "ISO#{camera.iso_low}" : "ISO?" %>-<%= camera.iso_high? ? "#{camera.iso_high}," : "?," %>
+						<% unless camera.iso_low.blank? && camera.iso_high.blank? %>
+							<%= camera.iso_low? ? "ISO#{camera.iso_low}" : "ISO?" %>-<%= camera.iso_high? ? "#{camera.iso_high}," : "?," %>
+						<% end %>
 						<%= camera.af_sensor? ? "#{camera.af_sensor}" : "" %>
 						<%= camera.af_points_total? ? "#{camera.af_points_total}p" : "" %>
 						<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "AF" %><br>
