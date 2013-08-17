@@ -15,7 +15,9 @@
 					<p class="name"><%= camera.company %> <%= camera.name1 %><%= " / #{camera.name2}" if camera.name2? %><%= " / #{camera.name3}" if camera.name3? %></p>
 					<p>
 						<%= camera.sensor_pixel? ? "#{camera.sensor_pixel.to_f/100}M" : "" %>
+
 						<%= camera.sensor_type %>
+
 						<% if camera.sensor_size? %>
 							<% if camera.sensor_size == "APS-H" || "FF" || "645(44x33mm)" || "S(45x30mm)" %>
 								<span class="fcb">
@@ -27,7 +29,8 @@
 								<span class="fcr">
 							<% end %>
 							<%= camera.sensor_size %></span>
-						<% end %>,
+						<% end %>
+
 						<%= camera.image_processor? ? "#{camera.image_processor}," : "" %>
 						<%= camera.fps.present? ? "#{number_with_precision(camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
 						<%= camera.shutter_speed? ? "1/#{camera.shutter_speed}sec" : "" %>

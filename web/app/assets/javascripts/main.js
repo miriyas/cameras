@@ -13,3 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require ./vendor/jquery.masonry.min
+//= require browser_timezone_rails/application.js
