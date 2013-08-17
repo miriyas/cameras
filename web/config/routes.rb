@@ -27,7 +27,9 @@ Cameras::Application.routes.draw do
 	  resources :cameras do
 			resources :comments
 			resources :links
-		end		
+		end
+		
+		resources :class_ranges
 	end
 	
 	root :to => 'cameras#index'

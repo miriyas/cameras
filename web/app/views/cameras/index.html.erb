@@ -1,7 +1,6 @@
 <div class="header">
 	<h1>[ 1995-2013 DSLR족보 ]</h1>
 	<p>http://cameras.miriya.net</p>
-	<%= Time.zone.name %>
 	<p>마지막 업데이트 / 내용 추가 : <%= Camera.order('updated_at DESC').first.updated_at.strftime("%Y. %m. %d") %>, <%= distance_of_time_in_words(Camera.order('updated_at DESC').first.updated_at, Time.now, false) %> 전</p>
 	<p>이 페이지는 현재 지속적으로 개선이 진행중입니다.<br>문의사항, 수정사항, <span class="ul">찬양할 점</span>이 있으면 아래에 댓글로 남겨주세요.</p>
 	<table class="mac">

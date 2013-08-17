@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130817193248) do
+ActiveRecord::Schema.define(:version => 20130817222222) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20130817193248) do
     t.string   "name1"
     t.string   "name2"
     t.string   "company"
-    t.string   "class_range"
     t.date     "release_date"
     t.string   "sensor_type"
     t.string   "sensor_size"
@@ -68,6 +67,16 @@ ActiveRecord::Schema.define(:version => 20130817193248) do
     t.string   "status"
     t.boolean  "sealing",         :default => false
     t.string   "lcd_etc"
+    t.integer  "class_range_id"
+  end
+
+  create_table "class_ranges", :force => true do |t|
+    t.string   "title"
+    t.integer  "position"
+    t.string   "size"
+    t.string   "range"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "comments", :force => true do |t|

@@ -57,7 +57,7 @@
 			</td>
       <td>
 				<%= camera.company %> <%= camera.mount %><br>
-				<%= camera.class_range %><br>
+				<%= camera.class_range.title if camera.class_range.present? %><br>
 				<%= camera.release_date.strftime("%Y/%m") %>
 			</td>
       <td>	

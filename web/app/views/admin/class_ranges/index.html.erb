@@ -1,0 +1,41 @@
+<%= title "클래스" %>
+
+<ul class="breadcrumb">
+  <li class="active">클래스</li>
+</ul>
+<h3 class="fl">총 <%= content_tag :span, ClassRange.count, :class => "font-important" %>개의 클래스</h3>
+
+<table class="table table-condensed table-hover fs12">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>순서</th>
+      <th>명칭</th>
+      <th>클래스</th>
+      <th>센서크기</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @classes.each do |classrange| %>
+    <tr>
+      <td><%= classrange.id %></td>
+      <td><%= classrange.position %></td>
+      <td><%= classrange.title %></td>
+      <td><%= classrange.range %></td>
+      <td><%= classrange.size %></td>
+      <td>
+        <%= link_to '수정', edit_admin_class_range_path(classrange), :class => "btn btn-mini btn-warning" %>
+        <%= link_to '삭제', admin_class_range_path(classrange), :method => :delete, :confirm => '정말 삭제하시겠습니까?', :class => "btn btn-mini btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="toolbox">
+  <div class="pull-right mb10">
+    <%= link_to new_admin_class_range_path, :class => "btn btn-success" do %>
+      <i class="icon-plus icon-white"></i> 클래스 생성
+    <% end %>
+  </div>
+</div>
