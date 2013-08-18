@@ -8,7 +8,6 @@
 <table class="table table-condensed table-hover fs12">
   <thead>
     <tr>
-      <th>ID</th>
       <th>순서</th>
       <th>명칭</th>
       <th>클래스</th>
@@ -18,7 +17,6 @@
   <tbody>
 		<% @classes.each do |classrange| %>
     <tr>
-      <td><%= classrange.id %></td>
       <td><%= classrange.position %></td>
       <td><%= classrange.title %></td>
       <td><%= classrange.range %></td>
