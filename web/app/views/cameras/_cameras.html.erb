@@ -2,8 +2,8 @@
 	<div class="year_group">
 		<p class="year"><%= year %></p>
 		<hr>
-		<% cameras = cameras.group_by(&:class_range_id).sort_by{ |position, camera| camera.first.class_range }.reverse.each do |position, cameras| %>
-		<%= "id " + position.to_s + " / p " + ClassRange.find(position).position.to_s %><br>
+		<% cameras = cameras.group_by(&:class_range_id).sort_by{ |range, camera| camera.first.class_range.position }.each do |range, cameras| %>
+		<%= "id " + range.to_s + " / p " + ClassRange.find(range).position.to_s %><br>
 		<%= cameras.map(&:name1) %>
 		<% cameras.each do |camera| %>
 			<div class="item <%= "op50" if camera.status == "pending" %>">
