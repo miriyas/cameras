@@ -49,6 +49,8 @@
 #  sealing         :boolean(1)      default(FALSE)
 #  lcd_etc         :string(255)
 #  class_range_id  :integer(4)
+#  v4000fps        :integer(4)
+#  v4000scan       :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

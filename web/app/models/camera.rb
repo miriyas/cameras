@@ -49,6 +49,8 @@
 #  sealing         :boolean(1)      default(FALSE)
 #  lcd_etc         :string(255)
 #  class_range_id  :integer(4)
+#  v4000fps        :integer(4)
+#  v4000scan       :string(255)
 #
 
 class Camera < ActiveRecord::Base
@@ -57,7 +59,7 @@ class Camera < ActiveRecord::Base
 	:mirror_type, :finder_magnify, :finder_coverage, :metering, :fps, :shutter_speed,
 	:af_points_total, :af_points_cross, :af_sensor, :shake_reduction,  
 	:lcd_size, :lcd_pixel, :lcd_type, :lcd_etc, :liveview, :storage, :sealing,
-	:v720fps, :v720scan, :v1080fps, :v1080scan, :video_format,
+	:v720fps, :v720scan, :v1080fps, :v1080scan, :v4000fps, :v4000scan, :video_format,
 	:weight, :d_width, :d_height, :d_depth, :mount, :power, :status
 
   mount_uploader :image, ImageUploader
