@@ -112,11 +112,11 @@
 			</td>
       <td>
 				<%= camera.v4000fps.present? ? "4K@#{camera.v4000fps}" : "" %><%= camera.v4000scan.present? ?
-					camera.v4000scan : "" %><br>
+					camera.v4000scan[0] : "" %><br>
 				<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ?
-					camera.v1080scan : "" %><br>
+					camera.v1080scan[0] : "" %><br>
 				<%= camera.v720fps.present? ? "720@#{camera.v720fps}" : "" %><%= camera.v720scan.present? ?
-						camera.v720scan : "" %><br>
+						camera.v720scan[0] : "" %><br>
 				<%= camera.video_format %>
 			</td>
 			<td>
