@@ -7,7 +7,7 @@
 			<%= f.input :name1 %>
 			<%= f.input :name2 %>
 			<%= f.input :name3 %>
-			<%= f.input :mount, :collection => [:"EF-S", :"EF-M", :EF, :FX, :DX, :CX, :K, :E, :"4/3", :"m4/3", :NX, :A, :SA, :N, :X, :Q, :M, :M42, :S, :"645A"] %>
+			<%= f.input :mount, :collection => [:"EF-S", :"EF-M", :EF, :F, :"1", :K, :E, :"4/3", :"m4/3", :NX, :A, :SA, :N, :X, :Q, :M, :M42, :S, :"645A"] %>
 			<%= f.input :company, :collection => [:Canon, :Nikon, :Sony, :Pentax, :Samsung, :Panasonic, :Olympus, :Fujifilm, :Minolta, :Kodak, :Leica, :Sigma, :Epson] %>
 			<%= f.association :class_range %>
 			<%= f.input :release_date, start_year: 1991, end_year: Date.today.year, discard_month: true, discard_hour: true, discard_minute: true %>
