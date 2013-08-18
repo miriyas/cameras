@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130817222222) do
+ActiveRecord::Schema.define(:version => 20130818101635) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20130817222222) do
     t.boolean  "sealing",         :default => false
     t.string   "lcd_etc"
     t.integer  "class_range_id"
+    t.integer  "v4000fps"
+    t.string   "v4000scan"
   end
 
   create_table "class_ranges", :force => true do |t|

@@ -49,10 +49,12 @@
 			<br>
 			<%= f.input :sealing, label_html: { :class => "di ml5" } %>
 			<br>
-			<%= f.input :v720fps %>
-			<%= f.input :v720scan, :collection => [:progressive, :interlaced] %>
+			<%= f.input :v4000fps %>
+			<%= f.input :v4000scan, :collection => [:progressive, :interlaced] %>
 			<%= f.input :v1080fps %>
 			<%= f.input :v1080scan, :collection => [:progressive, :interlaced] %>
+			<%= f.input :v720fps %>
+			<%= f.input :v720scan, :collection => [:progressive, :interlaced] %>
 			<%= f.input :video_format %>
 		</td>
 	</tr>

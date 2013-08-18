@@ -73,10 +73,9 @@
 						<%= camera.lcd_etc %>
 						<%= camera.lcd_type unless camera.lcd_type == "Normal" %><%= camera.liveview == true ? "LiveView " : " " %><%= ", #{camera.storage}" if camera.storage %>
 						<%= "#{number_with_precision(camera.d_width, :precision => 1, :strip_insignificant_zeros => true)}x" if camera.d_width? %><%= "#{number_with_precision(camera.d_height, :precision => 1, :strip_insignificant_zeros => true)}x" if camera.d_height? %><%= "#{number_with_precision(camera.d_depth, :precision => 1, :strip_insignificant_zeros => true)} / " if camera.d_depth? %><%= "#{number_with_precision(camera.weight, :precision => 1, :strip_insignificant_zeros => true)}g" if camera.weight? %>
-						<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ?
-							"#{camera.v1080scan[0]} /" : "" %>
-						<%= camera.v720fps.present? ? "720@#{camera.v720fps}" : "" %><%= camera.v720scan.present? ?
-							"#{camera.v720scan[0]} /" : "" %>
+						<%= camera.v4000fps.present? ? "4K@#{camera.v4000fps}" : "" %><%= camera.v4000scan.present? ? "#{camera.v4000scan} /" : "" %>
+						<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ? "#{camera.v1080scan} /" : "" %>
+						<%= camera.v720fps.present? ? "720@#{camera.v720fps}" : "" %><%= camera.v720scan.present? ?	"#{camera.v720scan} /" : "" %>
 						<%= camera.video_format %><br>
 						<% if camera.status == "pending" %> 
 							<span class="fcr">Need Data Confirm</span><br>
