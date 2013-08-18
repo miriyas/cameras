@@ -1,7 +1,6 @@
 <%= simple_form_for [:admin, @class_range] do |f| %>
 <%= hidden_field_tag :referer_url, request.env["HTTP_REFERER"] %>
 <%= f.input :position %>
-<%= f.input :title %>
 <%= f.input :range %>
 <%= f.input :size %>
 <br>

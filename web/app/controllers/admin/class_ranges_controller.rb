@@ -13,7 +13,9 @@ class Admin::ClassRangesController < ApplicationController
   end
 	
   def create
-    @class_range = ClassRange.new(params[:class_range])
+    params[:class_range] = process_title(params[:class_range])
+		@class_range = ClassRange.new(params[:class_range])
+		
 
     if @class_range.save
       redirect_to admin_class_ranges_path
@@ -26,6 +28,7 @@ class Admin::ClassRangesController < ApplicationController
     @class_range = ClassRange.find(params[:id])
   end
   def update
+    params[:class_range] = process_title(params[:class_range])
     @class_range = ClassRange.find(params[:id])    
     if @class_range.update_attributes(params[:class_range])
 	    redirect_to admin_class_ranges_path
@@ -40,4 +43,11 @@ class Admin::ClassRangesController < ApplicationController
 
     redirect_to admin_class_ranges_path
   end
+end
+
+private
+
+def process_title(params)
+	params[:title] = params[:range].to_s + " " + params[:size].to_s
+	return params
 end
