@@ -16,7 +16,7 @@ class CamerasController < ApplicationController
 		else
 			s = s.order('id DESC')
 		end
-	  @cameras = s.group_by { |camera| camera.release_date.strftime("%Y") }.sort {|a, b| a[0] <=> b[0] }
+	  @cameras  = s.group_by { |camera| camera.release_date.strftime("%Y") }.sort {|a, b| a[0] <=> b[0] }
 		@comments = Comment.all
 		@comment 	= Comment.new
 		@user 		= User.new

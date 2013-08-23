@@ -15,7 +15,7 @@
 		<td>
 			<%= f.input :sensor_size, :collection => Camera::SENSORS %>
 			<%= f.input :sensor_pixel %>
-			<%= f.input :sensor_type, :collection => [:CMOS, :CCD, :LBCAST, :"2 CCD", :"3 CCD"] %>
+			<%= f.input :sensor_type, :collection => [:CMOS, :CCD, :LBCAST, :"2 CCD", :"3 CCD", :SuperCCD] %>
 			<%= f.input :image_processor %>
 			<br>
 			<%= f.input :fps %>

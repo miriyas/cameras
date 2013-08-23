@@ -2,6 +2,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 	
+	before_filter :set_locale
+	
+	def set_locale
+		request.env['HTTP_ACCEPT_LANGUAGE']
+		Time.zone = "Yakutsk"
+	end
+	
   def redirect_to_back_or_default(default_path)
     redirect_to params[:referer_url] || default_path
   end
