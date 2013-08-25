@@ -86,7 +86,7 @@
 								<span class="fcr">Need Data Confirm</span>
 							<% end %>
 							<%= "<br>".html_safe if camera.status == "pending" && camera.more_info.present? %>
-							<span class="fcg"><%= camera.more_info %></span>
+							<span class="fcg"><%= nl2br(camera.more_info) if camera.more_info.present? %></span>
 							<%= "<br>".html_safe if camera.more_info.present? && camera.links.present? %>
 							<% camera.links.each do |link| %>
 								<% if link.name == "DPReview" %>
