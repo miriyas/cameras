@@ -83,11 +83,11 @@
 								<%= camera.video_format %><br>
 							<% end %>
 							<% if camera.status == "pending" %> 
-								<span class="fcr">Need Data Confirm</span><br>
+								<span class="fcr">Need Data Confirm</span>
 							<% end %>
-							<%= "<br>" if camera.status == "pending" && camera.more_info.present? %>
+							<%= "<br>".html_safe if camera.status == "pending" && camera.more_info.present? %>
 							<span class="fcg"><%= camera.more_info %></span>
-							<%= "<br>" if camera.more_info.present? && camera.links.present? %>
+							<%= "<br>".html_safe if camera.more_info.present? && camera.links.present? %>
 							<% camera.links.each do |link| %>
 								<% if link.name == "DPReview" %>
 									<span><%= link_to "DPR", link.url %></span>
