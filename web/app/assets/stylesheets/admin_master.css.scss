@@ -106,6 +106,24 @@ td {
 	}
 }
 
+input {
+	&.string, &.integer, &.float { width: 186px }
+	&.file, &.select { width: 200px }
+	&.boolean { margin-left: 0px !important }
+}
+
+select {
+	&.optional { width: 200px }
+}
+
+textarea {
+	&.optional { width: 186px }	
+}
+
+label {
+	&.boolean { padding-left: 0px }
+}
+
 .current {
 	h2 {
 		font-family: "Times New Roman", serif;

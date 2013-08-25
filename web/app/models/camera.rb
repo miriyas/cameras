@@ -72,9 +72,14 @@ class Camera < ActiveRecord::Base
   scope :of_running, where("status = 'running'")
   scope :of_pending, where("status = 'pending'")
 
-  SENSORS = [:'APS-C', :'FF', :'APS-H', :'4/3', :'6.4x4.8mm', :'18x12mm', :'645(44x33mm)', :'S(45x30mm)', :'20.5x16.4mm', :'14x9.3mm', :'13.8x9.2mm', :'27.6x18.4']
+  CATEGORIES = {'민영주차장' => 'private', '부설주차장' => 'attached', '공영주차장' => 'public', '거주자우선' => 'resident', '발렛파킹' => 'vallet'}
 
 
+  SENSORS 	= [:'APS-C', :'FF', :'APS-H', :'4/3', :'6.4x4.8mm', :'18x12mm', :'645(44x33mm)', :'S(45x30mm)', :'20.5x16.4mm', :'14x9.3mm', :'13.8x9.2mm', :'27.6x18.4']
+	COMPANIES = [:Canon, :Nikon, :Sony, :Pentax, :Samsung, :Panasonic, :Olympus, :Fujifilm, :Minolta, :Kodak, :Leica, :Sigma, :Epson]
+	MOUNTS 		= {"캐논 EF-S" => "EF-S", "캐논 EF-M" => "EF-M", "캐논 EF" => "EF", "니콘 F" => "F", "니콘 1" => "1", "펜탁스 K" => "K", "소니 E" => "E", "포서즈" => "4/3", "마이크로 4/3" => "m4/3", "삼성 NX" => "NX", "소니/미놀타 A" => "A", "시그마 SA" => "SA", "콘탁스 N" => "N", "후지필름 X" => "X", "펜탁스 Q" => "Q", "라이카 M" => "M", "M42" => "M42", "라이카 S" => "S", "645" => "645A" }
+	MIRRORTYPES = {"펜타프리즘" => "pentaprism", "펜타미러" => "pentamirror", "포로미러" => "porromirror", "EVF" => "EVF", "레인지파인더" => "rangefinder"}
+	
 	def self.search(search)
 		if search
 			where("name1 LIKE '%#{search}%' OR name2 LIKE '%#{search}%' OR name3 LIKE '%#{search}%' OR company LIKE '%#{search}%'")

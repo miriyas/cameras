@@ -7,8 +7,9 @@
 			<%= f.input :name1, label: "제품명1" %>
 			<%= f.input :name2, label: "제품명2" %>
 			<%= f.input :name3, label: "제품명3" %>
-			<%= f.input :mount, label: "마운트", :collection => [:"EF-S", :"EF-M", :EF, :F, :"1", :K, :E, :"4/3", :"m4/3", :NX, :A, :SA, :N, :X, :Q, :M, :M42, :S, :"645A"] %>
-			<%= f.input :company, label: "제조사", :collection => [:Canon, :Nikon, :Sony, :Pentax, :Samsung, :Panasonic, :Olympus, :Fujifilm, :Minolta, :Kodak, :Leica, :Sigma, :Epson] %>
+			<br>
+			<%= f.input :mount, label: "마운트", :collection => Camera::MOUNTS %>
+			<%= f.input :company, label: "제조사", :collection => Camera::COMPANIES %>
 			<%= f.association :class_range, label: "클래스" %>
 			<%= f.input :release_date, label: "출시해", start_year: 1991, end_year: Date.today.year, discard_month: true, discard_hour: true, discard_minute: true %>
 		</td>
@@ -18,19 +19,20 @@
 			<%= f.input :sensor_type, label: "센서종류", :collection => [:CMOS, :CCD, :LBCAST, :"2 CCD", :"3 CCD", :SuperCCD] %>
 			<%= f.input :image_processor, label: "이미징엔진" %>
 			<br>
+			<%= f.input :iso_low, label: "최저ISO" %>
+			<%= f.input :iso_high, label: "최대ISO" %>
+			<br>
 			<%= f.input :fps, label: "연사속도" %>
 			<%= f.input :shutter_speed, label: "최대셔터속도" %>
 			<br>
 			<%= f.input :metering, label: "측광" %>
-			<%= f.input :iso_low, label: "최저ISO" %>
-			<%= f.input :iso_high, label: "최대ISO" %>
 		</td>
 		<td>
 			<%= f.input :af_sensor, label: "AF센서" %>
 			<%= f.input :af_points_total, label: "측거점 수(전체)" %>
 			<%= f.input :af_points_cross, label: "측거점 수(크로스)" %>
 			<br>
-			<%= f.input :mirror_type, label: "미러 방식", :collection => [:"pentaprism", :"pentamirror", :"porromirror", :"EVF", :"rangefinder"] %>
+			<%= f.input :mirror_type, label: "미러 방식", :collection => Camera::MIRRORTYPES %>
 			<%= f.input :finder_magnify, label: "확대율" %>
 			<%= f.input :finder_coverage, label: "시야율%" %>
 			<br>
@@ -40,15 +42,6 @@
 			<%= f.input :lcd_etc, label: "화면기타" %>
 		</td>
 		<td>
-			<%= f.input :storage, label: "저장소" %>
-			<%= f.input :power, label: "전원" %>
-			<br>
-			<%= f.input :shake_reduction, label: "손떨림방지", label_html: { :class => "di ml5" } %>
-			<br>
-			<%= f.input :liveview, label: "라이브뷰", label_html: { :class => "di ml5" } %>
-			<br>
-			<%= f.input :sealing, label: "방진방습", label_html: { :class => "di ml5" } %>
-			<br>
 			<%= f.input :v4000fps %>
 			<%= f.input :v4000scan, :collection => [:progressive, :interlaced] %>
 			<%= f.input :v1080fps %>
@@ -56,24 +49,29 @@
 			<%= f.input :v720fps %>
 			<%= f.input :v720scan, :collection => [:progressive, :interlaced] %>
 			<%= f.input :video_format %>
+			<br>
+			<%= f.input :shake_reduction, label: "손떨림방지", label_html: { :class => "di ml5" } %>
+			<br>
+			<%= f.input :liveview, label: "라이브뷰", label_html: { :class => "di ml5" } %>
+			<br>
+			<%= f.input :sealing, label: "방진방습", label_html: { :class => "di ml5" } %>
 		</td>
-	</tr>
-	<tr>
 		<td>
+			<%= f.input :storage, label: "저장소" %>
+			<%= f.input :power, label: "전원" %>
+			<br>
 			<%= f.input :d_width, label: "가로" %>
 			<%= f.input :d_height, label: "세로" %>
 			<%= f.input :d_depth, label: "두께" %>
 			<%= f.input :weight, label: "무게" %>
-		</td>
-		<td>
+			<br>
 			<%= f.input :status, label: "상태", :collection => [:pending, :running] %>
 			<%= f.input :more_info, label: "추가정보", input_html: { rows: 3 } %>
+			<div class="actions">
+				<%= f.submit "Submit", :class => "btn btn-success" %>
+			</div>
 		</td>
 	</tr>
 </table>
-<br>
-<div class="actions">
-	<%= f.submit "Submit", :class => "btn btn-success" %>
-</div>
 
 <% end %>
