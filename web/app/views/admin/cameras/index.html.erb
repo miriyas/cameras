@@ -157,7 +157,8 @@
 						<% end %>
 					<% end %>
 		    <% end %>
-				<%= camera.more_info %>
+				<span class="fcg"><%= camera.more_info %></span>
+				<%= nl2br(camera.far_more_info) if camera.far_more_info.present? %>
 			</td>
     <% end %>
 		</tr>

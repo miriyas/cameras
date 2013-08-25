@@ -12,6 +12,7 @@
 			<%= f.input :company, label: "제조사", :collection => Camera::COMPANIES %>
 			<%= f.association :class_range, label: "클래스" %>
 			<%= f.input :release_date, label: "출시해", start_year: 1991, end_year: Date.today.year, discard_month: true, discard_hour: true, discard_minute: true %>
+			<%= f.input :far_more_info, label: "추가정보", input_html: { rows: 3 } %>
 		</td>
 		<td>
 			<%= f.input :sensor_size, label: "센서크기", :collection => Camera::SENSORS %>
@@ -19,13 +20,13 @@
 			<%= f.input :sensor_pixel, label: "유효픽셀" %>
 			<%= f.input :image_processor, label: "이미징엔진" %>
 			<br>
+			<%= f.input :metering, label: "측광" %>
+			<br>
 			<%= f.input :iso_low, label: "최저ISO" %>
 			<%= f.input :iso_high, label: "최대ISO" %>
 			<br>
-			<%= f.input :fps, label: "연사속도" %>
 			<%= f.input :shutter_speed, label: "최대셔터속도" %>
-			<br>
-			<%= f.input :metering, label: "측광" %>
+			<%= f.input :fps, label: "연사속도" %>
 		</td>
 		<td>
 			<%= f.input :af_sensor, label: "AF센서" %>
@@ -66,7 +67,7 @@
 			<%= f.input :weight, label: "무게" %>
 			<br>
 			<%= f.input :status, label: "상태", :collection => [:pending, :running] %>
-			<%= f.input :more_info, label: "추가정보", input_html: { rows: 3 } %>
+			<%= f.input :more_info, label: "특이사항", input_html: { rows: 3 } %>
 			<div class="actions">
 				<%= f.submit "Submit", :class => "btn btn-success" %>
 			</div>

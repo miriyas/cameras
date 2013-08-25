@@ -15,69 +15,73 @@
 					<div class="item_desc">
 						<p class="name"><%= camera.company %> <%= camera.name1 %><%= " / #{camera.name2}" if camera.name2? %><%= " / #{camera.name3}" if camera.name3? %></p>
 						<p>
-							<%= camera.sensor_pixel? ? "#{camera.sensor_pixel.to_f/100}M" : "" %>
+							<% if camera.far_more_info.present? %>
+								<%= nl2br(camera.far_more_info) %>
+							<% else %>
+								<%= camera.sensor_pixel? ? "#{camera.sensor_pixel.to_f/100}M" : "" %>
 
-							<%= camera.sensor_type %>
+								<%= camera.sensor_type %>
 
-							<% if camera.sensor_size? %>
-								<% if camera.sensor_size == "APS-H" || "FF" || "645(44x33mm)" || "S(45x30mm)" %>
-									<span class="fcb">
-								<% elsif camera.sensor_size == "4/3" %>
-									<span class="fcg">
-								<% elsif camera.sensor_size == "APS-C" %>
-									<span>
-								<% else %>
-									<span class="fcr">
+								<% if camera.sensor_size? %>
+									<% if camera.sensor_size == "APS-H" || "FF" || "645(44x33mm)" || "S(45x30mm)" %>
+										<span class="fcb">
+									<% elsif camera.sensor_size == "4/3" %>
+										<span class="fcg">
+									<% elsif camera.sensor_size == "APS-C" %>
+										<span>
+									<% else %>
+										<span class="fcr">
+									<% end %>
+									<%= camera.sensor_size %></span>
 								<% end %>
-								<%= camera.sensor_size %></span>
+
+								<%= camera.image_processor? ? "#{camera.image_processor}," : "" %>
+								<%= camera.fps.present? ? "#{number_with_precision(camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
+								<%= camera.shutter_speed? ? "1/#{camera.shutter_speed}sec" : "" %>
+						
+								<br>
+						
+								<%= camera.metering? ? "#{camera.metering}측광" : "" %>
+
+								<%= ", " if camera.metering? && (camera.iso_low? || camera.iso_high?) %>
+
+								<% unless camera.iso_low.blank? && camera.iso_high.blank? %>
+									<%= camera.iso_low? ? "ISO#{camera.iso_low}" : "ISO?" %>-<%= camera.iso_high? ? "#{camera.iso_high}" : "?" %>
+								<% end %>
+
+								<%= ", " if (camera.iso_low? || camera.iso_high?) && (camera.af_sensor? || camera.af_points_total? || camera.af_points_cross?) %>
+						
+								<%= camera.af_sensor? ? "#{camera.af_sensor}" : "" %>
+								<%= camera.af_points_total? ? "#{camera.af_points_total}p" : "" %>
+								<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "" %>
+						
+								<%= " AF" if (camera.af_sensor? || camera.af_points_total? || camera.af_points_cross?) %>						
+						
+								<br>
+						
+								<%= "#{camera.mount} mount, " if camera.mount? %><%= camera.power %>
+								<% 	if camera.mirror_type? && camera.mirror_type == "pentaprism"
+									 		concat "펜타프리즘"
+										elsif camera.mirror_type? && camera.mirror_type == "pentamirror"
+											concat "펜타미러"
+										elsif camera.mirror_type? && camera.mirror_type == "rangefinder"
+											concat "RF"
+										elsif camera.mirror_type? && camera.mirror_type == "porromirror"
+											concat "포로미러"
+										else
+											concat ""
+										end %>
+								<%= camera.finder_magnify? ? "x#{camera.finder_magnify}" : "" %><%= camera.finder_coverage? ? "/#{camera.finder_coverage}%" : "" %><%= camera.mirror_type? ? "," : "" %><br>
+								<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
+								<%= camera.lcd_size.present? ? "#{number_with_precision(camera.lcd_size, :precision => 1, :strip_insignificant_zeros => true)}\" LCD" : "NO LCD" %>
+								<%= camera.lcd_etc %>
+								<%= camera.lcd_type unless camera.lcd_type == "Normal" %><%= camera.liveview == true ? "LiveView " : " " %><%= ", #{camera.storage}" if camera.storage %>
+								<%= "#{number_with_precision(camera.d_width, :precision => 1, :strip_insignificant_zeros => true)}x" if camera.d_width? %><%= "#{number_with_precision(camera.d_height, :precision => 1, :strip_insignificant_zeros => true)}x" if camera.d_height? %><%= "#{number_with_precision(camera.d_depth, :precision => 1, :strip_insignificant_zeros => true)} / " if camera.d_depth? %><%= "#{number_with_precision(camera.weight, :precision => 1, :strip_insignificant_zeros => true)}g" if camera.weight? %>
+								<%= camera.v4000fps.present? ? "4K@#{camera.v4000fps}" : "" %><%= camera.v4000scan.present? ? "#{camera.v4000scan[0]} /" : "" %>
+								<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ? "#{camera.v1080scan[0]} /" : "" %>
+								<%= camera.v720fps.present? ? "720@#{camera.v720fps}" : "" %><%= camera.v720scan.present? ?	"#{camera.v720scan[0]} /" : "" %>
+								<%= camera.video_format %><br>
 							<% end %>
-
-							<%= camera.image_processor? ? "#{camera.image_processor}," : "" %>
-							<%= camera.fps.present? ? "#{number_with_precision(camera.fps, :precision => 1, :strip_insignificant_zeros => true)}fps," : "" %>
-							<%= camera.shutter_speed? ? "1/#{camera.shutter_speed}sec" : "" %>
-						
-							<br>
-						
-							<%= camera.metering? ? "#{camera.metering}측광" : "" %>
-
-							<%= ", " if camera.metering? && (camera.iso_low? || camera.iso_high?) %>
-
-							<% unless camera.iso_low.blank? && camera.iso_high.blank? %>
-								<%= camera.iso_low? ? "ISO#{camera.iso_low}" : "ISO?" %>-<%= camera.iso_high? ? "#{camera.iso_high}" : "?" %>
-							<% end %>
-
-							<%= ", " if (camera.iso_low? || camera.iso_high?) && (camera.af_sensor? || camera.af_points_total? || camera.af_points_cross?) %>
-						
-							<%= camera.af_sensor? ? "#{camera.af_sensor}" : "" %>
-							<%= camera.af_points_total? ? "#{camera.af_points_total}p" : "" %>
-							<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "" %>
-						
-							<%= " AF" if (camera.af_sensor? || camera.af_points_total? || camera.af_points_cross?) %>						
-						
-							<br>
-						
-							<%= "#{camera.mount} mount, " if camera.mount? %><%= camera.power %>
-							<% 	if camera.mirror_type? && camera.mirror_type == "pentaprism"
-								 		concat "펜타프리즘"
-									elsif camera.mirror_type? && camera.mirror_type == "pentamirror"
-										concat "펜타미러"
-									elsif camera.mirror_type? && camera.mirror_type == "rangefinder"
-										concat "RF"
-									elsif camera.mirror_type? && camera.mirror_type == "porromirror"
-										concat "포로미러"
-									else
-										concat ""
-									end %>
-							<%= camera.finder_magnify? ? "x#{camera.finder_magnify}" : "" %><%= camera.finder_coverage? ? "/#{camera.finder_coverage}%" : "" %><%= camera.mirror_type? ? "," : "" %><br>
-							<%= camera.lcd_pixel.present? ? "#{camera.lcd_pixel/1000}K" : "" %>
-							<%= camera.lcd_size.present? ? "#{number_with_precision(camera.lcd_size, :precision => 1, :strip_insignificant_zeros => true)}\" LCD" : "NO LCD" %>
-							<%= camera.lcd_etc %>
-							<%= camera.lcd_type unless camera.lcd_type == "Normal" %><%= camera.liveview == true ? "LiveView " : " " %><%= ", #{camera.storage}" if camera.storage %>
-							<%= "#{number_with_precision(camera.d_width, :precision => 1, :strip_insignificant_zeros => true)}x" if camera.d_width? %><%= "#{number_with_precision(camera.d_height, :precision => 1, :strip_insignificant_zeros => true)}x" if camera.d_height? %><%= "#{number_with_precision(camera.d_depth, :precision => 1, :strip_insignificant_zeros => true)} / " if camera.d_depth? %><%= "#{number_with_precision(camera.weight, :precision => 1, :strip_insignificant_zeros => true)}g" if camera.weight? %>
-							<%= camera.v4000fps.present? ? "4K@#{camera.v4000fps}" : "" %><%= camera.v4000scan.present? ? "#{camera.v4000scan[0]} /" : "" %>
-							<%= camera.v1080fps.present? ? "1080@#{camera.v1080fps}" : "" %><%= camera.v1080scan.present? ? "#{camera.v1080scan[0]} /" : "" %>
-							<%= camera.v720fps.present? ? "720@#{camera.v720fps}" : "" %><%= camera.v720scan.present? ?	"#{camera.v720scan[0]} /" : "" %>
-							<%= camera.video_format %><br>
 							<% if camera.status == "pending" %> 
 								<span class="fcr">Need Data Confirm</span><br>
 							<% end %>
