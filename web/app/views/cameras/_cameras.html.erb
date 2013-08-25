@@ -16,7 +16,7 @@
 						<p class="name"><%= camera.company %> <%= camera.name1 %><%= " / #{camera.name2}" if camera.name2? %><%= " / #{camera.name3}" if camera.name3? %></p>
 						<p>
 							<% if camera.far_more_info.present? %>
-								<%= nl2br(camera.far_more_info) %>
+								<%= nl2br(camera.far_more_info) %><br>
 							<% else %>
 								<%= camera.sensor_pixel? ? "#{camera.sensor_pixel.to_f/100}M" : "" %>
 
