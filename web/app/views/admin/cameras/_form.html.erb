@@ -15,8 +15,8 @@
 		</td>
 		<td>
 			<%= f.input :sensor_size, label: "센서크기", :collection => Camera::SENSORS %>
-			<%= f.input :sensor_pixel, label: "유효픽셀" %>
 			<%= f.input :sensor_type, label: "센서종류", :collection => [:CMOS, :CCD, :LBCAST, :"2 CCD", :"3 CCD", :SuperCCD, :"Foveon X3"] %>
+			<%= f.input :sensor_pixel, label: "유효픽셀" %>
 			<%= f.input :image_processor, label: "이미징엔진" %>
 			<br>
 			<%= f.input :iso_low, label: "최저ISO" %>
@@ -33,8 +33,8 @@
 			<%= f.input :af_points_cross, label: "측거점 수(크로스)" %>
 			<br>
 			<%= f.input :mirror_type, label: "미러 방식", :collection => Camera::MIRRORTYPES %>
-			<%= f.input :finder_magnify, label: "확대율" %>
 			<%= f.input :finder_coverage, label: "시야율%" %>
+			<%= f.input :finder_magnify, label: "확대율" %>
 			<br>
 			<%= f.input :lcd_size, label: "화면크기" %>
 			<%= f.input :lcd_pixel, label: "화면픽셀" %>
