@@ -3,7 +3,7 @@ class CamerasController < ApplicationController
 	layout "main"
 
   def index
-    s = Camera.of_showing.search(params[:search])
+    s = Camera.search(params[:search])
 		if params[:company].present?
 			if params[:company] == "sony/minolta"
 				s = s.where("company LIKE 'sony' OR company LIKE 'minolta'") 
@@ -12,9 +12,9 @@ class CamerasController < ApplicationController
 			else
 				s = s.where(company: params[:company])
 			end
-			s = s.order('release_date DESC')
+			s = s.of_showing.order('release_date DESC')
 		else
-			s = s.order('id DESC')
+			s = s.of_showing.order('id DESC')
 		end
 	  @cameras  = s.group_by { |camera| camera.release_date.strftime("%Y") }.sort {|a, b| a[0] <=> b[0] }
 		@comments = Comment.all
