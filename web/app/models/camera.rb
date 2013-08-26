@@ -71,9 +71,8 @@ class Camera < ActiveRecord::Base
 
   scope :of_running, where("status = 'running'")
   scope :of_pending, where("status = 'pending'")
-
-  CATEGORIES = {'민영주차장' => 'private', '부설주차장' => 'attached', '공영주차장' => 'public', '거주자우선' => 'resident', '발렛파킹' => 'vallet'}
-
+  scope :of_hidden, where("status = 'hidden'")
+	scope :of_showing, where(status: !"running")
 
   SENSORS 	= [:'APS-C', :'FF', :'APS-H', :'4/3', :"1.7크롭", :'6.4x4.8mm', :'18x12mm', :'645(44x33mm)', :'S(45x30mm)', :'M3 20.5x16.4mm', :'M5 14x9.3mm', :'M6 27.6x18.4mm', :'M11', :'M15', :'M16', :'M17 18.1x13.5mm', :'M23', :'M24', :'C14', :'X14', :'2/3"']
 

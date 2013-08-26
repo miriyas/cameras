@@ -3,7 +3,7 @@ class CamerasController < ApplicationController
 	layout "main"
 
   def index
-    s = Camera.search(params[:search])
+    s = Camera.search(params[:search]).of_showing
 		if params[:company].present?
 			if params[:company] == "sony/minolta"
 				s = s.where("company LIKE 'sony' OR company LIKE 'minolta'") 
