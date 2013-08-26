@@ -75,7 +75,22 @@ class Camera < ActiveRecord::Base
   CATEGORIES = {'민영주차장' => 'private', '부설주차장' => 'attached', '공영주차장' => 'public', '거주자우선' => 'resident', '발렛파킹' => 'vallet'}
 
 
-  SENSORS 	= [:'APS-C', :'FF', :'APS-H', :'4/3', :"1.7크롭", :'6.4x4.8mm', :'18x12mm', :'645(44x33mm)', :'S(45x30mm)', :'M3 20.5x16.4mm', :'M5 14x9.3mm', :'M3 13.8x9.2mm', :'M6 27.6x18.4mm', :'M11', :'M15', :'M16', :'M17', :'M23', :'M24', :'C14', :'X14', :'2/3"']
+  SENSORS 	= [:'APS-C', :'FF', :'APS-H', :'4/3', :"1.7크롭", :'6.4x4.8mm', :'18x12mm', :'645(44x33mm)', :'S(45x30mm)', :'M3 20.5x16.4mm', :'M5 14x9.3mm', :'M6 27.6x18.4mm', :'M11', :'M15', :'M16', :'M17', :'M23', :'M24', :'C14', :'X14', :'2/3"']
+
+	# M1								1320x1035		136MP
+	# M3	20.5x16.4mm		1012x1268		128MP
+	# M3								1024x1280		131MP
+	# M5	13.7x9.1mm		1012x1524		154MP
+	# M6								2036x3060		623MP
+	# M11								4080x4080		1664MP
+	# M15								1152x1728		199MP
+	# M16								2008x3040		610MP
+	# M17	18.1x13.5mm		1504x2008		302MP
+	# M23								1152x1728		199MP
+	# M24								1958x2606		510MP
+	# C14								3000x4500		1350MP
+	# X14								3000x4500		1350MP
+	
 	COMPANIES = [:Canon, :Nikon, :Sony, :Pentax, :Samsung, :Panasonic, :Olympus, :Fujifilm, :Minolta, :Kodak, :Leica, :Sigma, :Epson]
 	MOUNTS 		= {"캐논 EF-S" => "EF-S", "캐논 EF-M" => "EF-M", "캐논 EF" => "EF", "니콘 F" => "F", "니콘 1" => "1", "펜탁스 K" => "K", "소니 E" => "E", "포서즈" => "4/3", "마이크로 4/3" => "m4/3", "삼성 NX" => "NX", "소니/미놀타 A" => "A", "시그마 SA" => "SA", "콘탁스 N" => "N", "후지필름 X" => "X", "펜탁스 Q" => "Q", "라이카 M" => "M", "M42" => "M42", "라이카 S" => "S", "645" => "645A" }
 	MIRRORTYPES = {"펜타프리즘" => "pentaprism", "펜타미러" => "pentamirror", "포로미러" => "porromirror", "EVF" => "EVF", "레인지파인더" => "rangefinder"}
