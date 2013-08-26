@@ -41,19 +41,15 @@
 						
 								<br>
 						
-								<%= camera.metering? ? "#{camera.metering}측광" : "" %>
-
-								<%= ", " if camera.metering? && (camera.iso_low? || camera.iso_high?) %>
+								<%= camera.metering? ? "#{camera.metering}측광" : "" %><%= ", " if camera.metering? && (camera.iso_low? || camera.iso_high?) %>
 
 								<% unless camera.iso_low.blank? && camera.iso_high.blank? %>
 									<%= camera.iso_low? ? "ISO#{camera.iso_low}" : "ISO?" %>-<%= camera.iso_high? ? "#{camera.iso_high}" : "?" %>
-								<% end %>
-
-								<%= ", " if (camera.iso_low? || camera.iso_high?) && (camera.af_sensor? || camera.af_points_total? || camera.af_points_cross?) %>
+								<% end %><%= ", " if (camera.iso_low? || camera.iso_high?) && (camera.af_sensor? || camera.af_points_total? || camera.af_points_cross?) %>
 						
 								<%= camera.af_sensor? ? "#{camera.af_sensor}" : "" %>
 								<%= camera.af_points_total? ? "#{camera.af_points_total}p" : "" %>
-								<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c AF" : "" %>
+								<%= camera.af_points_cross? ? "/#{camera.af_points_cross}c" : "" %>
 						
 								<%= " AF" if (camera.af_sensor? || camera.af_points_total? || camera.af_points_cross?) %>						
 						
