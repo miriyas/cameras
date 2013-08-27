@@ -130,8 +130,12 @@
 				<%= camera.links_count %><br>
 				<% if camera.status == "pending" %> 
 					<span class="label label-warning">
-				<% else %>
+				<% elsif camera.status == "running" %> 
 					<span class="label label-success">
+				<% elsif camera.status == "hidden" %> 
+					<span class="label label-important">
+				<% else %> 
+					<span class="label label-inverse">WTF
 				<% end %>
 				<%= camera.status %></span>
 			</td>
