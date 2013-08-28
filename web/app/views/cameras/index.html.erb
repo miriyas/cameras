@@ -1,5 +1,5 @@
 <div class="header">
-	<h1>[ 1995-2013 DSLR족보 ]</h1>
+	<h1>[ 1991-2013 DSLR족보 ]</h1>
 	<p>http://cameras.miriya.net</p>
 	<p>모든 렌즈 교환식 카메라를 모아봤습니다. 다만 디지털백과 비디오 전용은 제외합니다.</p>
 	<p>마지막 업데이트 / 내용 추가 : <%= Camera.order('updated_at DESC').first.updated_at.strftime("%Y. %m. %d") %>, <%= distance_of_time_in_words(Camera.order('updated_at DESC').first.updated_at, Time.now, false) %> 전</p>

@@ -74,7 +74,7 @@ class Camera < ActiveRecord::Base
   scope :of_hidden, where("status = 'hidden'")
 	scope :of_showing, where("status != 'hidden'")
 
-  SENSORS 	= [:'APS-C', :'FF', :'APS-H', :'4/3', :"1.7크롭", :'6.4x4.8mm', :'18x12mm', :'645(44x33mm)', :'S(45x30mm)', :'M3 20.5x16.4mm', :'M5 14x9.3mm', :'M6 27.6x18.4mm', :'M11', :'M15', :'M16', :'M17 18.1x13.5mm', :'M23', :'M24', :'C14', :'X14', :'2/3"']
+  SENSORS 	= [:'APS-C', :'FF', :'APS-H', :'4/3', :"1.7크롭", :'6.4x4.8mm', :'18x12mm', :'645(44x33mm)', :'S(45x30mm)', :'M3 20.5x16.4mm', :'M5 14x9.3mm', :'M6 27.6x18.4mm', :'M11', :'M15', :'M16', :'M17 18.1x13.5mm', :'M24', :'C14', :'X14', :'2/3"']
 
 	# M1								1320x1035		136MP
 	# M3	20.5x16.4mm		1012x1268		128MP
@@ -85,7 +85,7 @@ class Camera < ActiveRecord::Base
 	# M15								1152x1728		199MP
 	# M16								2008x3040		610MP
 	# M17	18.1x13.5mm		1504x2008		302MP
-	# M23								1152x1728		199MP
+	# M23	FF						1152x1728		199MP
 	# M24								1958x2606		510MP
 	# C14								3000x4500		1350MP
 	# X14								3000x4500		1350MP
