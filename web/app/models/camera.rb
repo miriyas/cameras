@@ -90,7 +90,7 @@ class Camera < ActiveRecord::Base
 	# C14								3000x4500		1350MP
 	# X14								3000x4500		1350MP
 	
-	COMPANIES = [:Canon, :Nikon, :Sony, :Pentax, :Samsung, :Panasonic, :Olympus, :Fujifilm, :Minolta, :Kodak, :Leica, :Sigma, :Epson]
+	COMPANIES = [:Canon, :Nikon, :Sony, :Pentax, :Samsung, :Panasonic, :Olympus, :Fujifilm, :Minolta, :Kodak, :Leica, :Sigma, :Contax, :Epson]
 	MOUNTS 		= {"캐논 EF-S" => "EF-S", "캐논 EF-M" => "EF-M", "캐논 EF" => "EF", "니콘 F" => "F", "니콘 1" => "1", "펜탁스 K" => "K", "소니 E" => "E", "포서즈" => "4/3", "마이크로 4/3" => "m4/3", "삼성 NX" => "NX", "소니/미놀타 A" => "A", "시그마 SA" => "SA", "콘탁스 N" => "N", "후지필름 X" => "X", "펜탁스 Q" => "Q", "라이카 M" => "M", "M42" => "M42", "라이카 S" => "S", "645" => "645A" }
 	MIRRORTYPES = {"펜타프리즘" => "pentaprism", "펜타미러" => "pentamirror", "포로미러" => "porromirror", "EVF" => "EVF", "레인지파인더" => "rangefinder"}
 	
