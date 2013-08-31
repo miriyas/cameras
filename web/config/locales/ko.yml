@@ -195,3 +195,10 @@ ko:
   activerecord:
     errors:
       <<: *errors
+  views:
+    pagination:
+      first: "처음"
+      last: "최신"
+      previous: "<"
+      next: ">"
+      truncate: "..."

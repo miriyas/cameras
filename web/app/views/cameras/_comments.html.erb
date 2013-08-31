@@ -1,4 +1,6 @@
-<%= paginate @comments, :theme => 'twitter-bootstrap' %>
+<div class="pagination_wrapper top">
+	<%= paginate @comments, :theme => 'twitter-bootstrap' %>
+</div>
 <ul>
 	<% @comments.each do |comment| %>
 		<li class="comment <%= "admin" if comment.user.role == "admin" %>">
@@ -14,4 +16,6 @@
 		</li>
 	<% end %>
 </ul>
-<%= paginate @comments, :theme => 'twitter-bootstrap' %>
+<div class="pagination_wrapper bottom">
+	<%= paginate @comments, :theme => 'twitter-bootstrap' %>
+</div>

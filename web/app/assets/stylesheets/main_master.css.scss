@@ -80,10 +80,12 @@ hr {
 	@include clearfix;
 	width: 830px;
 	margin: 0 auto;
-	border-left: 1px solid #d6d6d6;
-	border-right: 1px solid #d6d6d6;
+	border: 1px solid #d6d6d6;
 	ul {
 		margin: 0;
+		.comment:first-child {
+			border-top: none;			
+		}
 		.comment {
 			@include clearfix;
 			border-top: 1px solid #d6d6d6;
@@ -131,18 +133,25 @@ hr {
 			}
 		}
 	}
-	.pagination {
-		margin: 0;
-		text-align: center;
-		border-top: 1px solid #d6d6d6;
-		padding-top: 5px;
+	.pagination_wrapper {
+		&.top {
+			border-bottom: 1px dashed #d6d6d6;
+		}
+		&.bottom {
+			border-top: 1px dashed #d6d6d6;
+		}
+		.pagination {
+			margin: 0;
+			text-align: center;
+			padding-top: 5px;
+			background-color: #f7f7f7;
+		}		
 	}
 }
 #footer {
 	width: 830px;
 	margin: 0 auto;
 	background-color: #eee;
-	border-top: 1px solid #d6d6d6;
 	border-left: 1px solid #d6d6d6;
 	border-right: 1px solid #d6d6d6;
 	padding-top: 10px;
