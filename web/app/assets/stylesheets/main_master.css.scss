@@ -84,52 +84,58 @@ hr {
 	border-right: 1px solid #d6d6d6;
 	ul {
 		margin: 0;
-	}
-	.comment {
-		@include clearfix;
-		border-top: 1px solid #d6d6d6;
-		background-color: #f7f7f7;
-		&.admin {
-			background-color: #fffff7;
-		}
-		.top {
-			width: 810px;
-			margin: 10px;
-			.user {
-				float: left;
-				.name {
-					font-size: 12px;
-					font-weight: bold;
-					&.admin {
-						color: #AA4400;
+		.comment {
+			@include clearfix;
+			border-top: 1px solid #d6d6d6;
+			background-color: #f7f7f7;
+			&.admin {
+				background-color: #fffff7;
+			}
+			.top {
+				width: 810px;
+				margin: 10px;
+				.user {
+					float: left;
+					.name {
+						font-size: 12px;
+						font-weight: bold;
+						&.admin {
+							color: #AA4400;
+						}
+					}
+					.ip, .divider, .time {
+						font-size: 10px;
+						color: #999;
+						line-height: 14px;
+					}
+					.ip {
+						margin-left: 10px;
+					}
+					.divider, .time {
+						margin-left: 5px;
 					}
 				}
-				.ip, .divider, .time {
-					font-size: 10px;
-					color: #999;
-					line-height: 14px;
-				}
-				.ip {
-					margin-left: 10px;
-				}
-				.divider, .time {
-					margin-left: 5px;
+				.control {
+					float: right;
+					font-size: 12px;
+					text-decoration: underline;
+					font-weight: normal;
 				}
 			}
-			.control {
-				float: right;
+			.body {
+				float: left;
+				width: 790px;
+				padding: 10px 20px;
+				line-height: 18px;
 				font-size: 12px;
-				text-decoration: underline;
-				font-weight: normal;
 			}
 		}
-		.body {
-			float: left;
-			width: 790px;
-			padding: 10px 20px;
-			line-height: 18px;
-			font-size: 12px;
-		}
+	}
+	.pagination {
+		margin: 0;
+		text-align: center;
+		border-top: 1px solid #d6d6d6;
+		padding-top: 5px;
 	}
 }
 #footer {
