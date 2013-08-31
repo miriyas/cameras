@@ -78,6 +78,10 @@ hr {
 
 #comments {
 	@include clearfix;
+	width: 830px;
+	margin: 0 auto;
+	border-left: 1px solid #d6d6d6;
+	border-right: 1px solid #d6d6d6;
 	ul {
 		margin: 0;
 	}
@@ -88,56 +92,61 @@ hr {
 		&.admin {
 			background-color: #fffff7;
 		}
-		.centering {
-			width: 960px;
-			margin: 0 auto;
+		.top {
+			width: 810px;
+			margin: 10px;
 			.user {
 				float: left;
-				width: 120px;
-				text-align: center;
-				margin: 10px;
-				font-weight: bold;
-				.etc {
-					font-size: 11px;
-					color: #BBB;
+				.name {
+					font-size: 12px;
+					font-weight: bold;
+					&.admin {
+						color: #AA4400;
+					}
+				}
+				.ip, .divider, .time {
+					font-size: 10px;
+					color: #999;
 					line-height: 14px;
 				}
-			}
-			.body {
-				float: left;
-				width: 650px;
-				padding: 10px;
-				line-height: 18px;
-				font-size: 12px;
+				.ip {
+					margin-left: 10px;
+				}
+				.divider, .time {
+					margin-left: 5px;
+				}
 			}
 			.control {
-				width: 120px;
-				height: 70px;
-				float: left;
-				margin-top: 10px;
+				float: right;
 				font-size: 12px;
 				text-decoration: underline;
-			}			
+				font-weight: normal;
+			}
+		}
+		.body {
+			float: left;
+			width: 790px;
+			padding: 10px 20px;
+			line-height: 18px;
+			font-size: 12px;
 		}
 	}
 }
 #footer {
-	width: 100%;
+	width: 830px;
+	margin: 0 auto;
 	background-color: #eee;
 	border-top: 1px solid #d6d6d6;
-	padding: 10px 0px;
+	border-left: 1px solid #d6d6d6;
+	border-right: 1px solid #d6d6d6;
+	padding-top: 10px;
 	.new {
-		width: 960px;
-		margin: 0 auto;
-	
 		form {
 			margin: 0px;
 		}
 		.name {
-			float: left;
-			width: 120px;
-			text-align: center;
-			margin: 14px 10px;
+			float: right;
+			margin: 14px 23px;
 			font-weight: bold;
 			.logout {
 				font-size: 11px;
@@ -148,16 +157,19 @@ hr {
 			float: left;
 			margin-right: 10px;
 			textarea {
-				width: 650px;
+				width: 790px;
 				margin: 0px;
+				margin-left: 13px;
 				font-size: 12px;
 				line-height: 18px;
 			}
 		}
 		.submit {
-			width: 116px;
-			height: 70px;
-			float: left;
+			width: 100px;
+			height: 30px;
+			margin-top: 10px;
+			margin-right: 13px;
+			float: right;
 		}
 	}
 	.user {
