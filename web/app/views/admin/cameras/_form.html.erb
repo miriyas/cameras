@@ -3,72 +3,62 @@
 <table>
 	<tr>
 		<td>
-			<%= f.input :image, :as => :file %>
 			<%= f.input :name1, label: "제품명1" %>
-			<%= f.input :name2, label: "제품명2" %>
-			<%= f.input :name3, label: "제품명3" %>
-			<br>
-			<%= f.input :mount, label: "마운트", :collection => Camera::MOUNTS %>
-			<%= f.input :company, label: "제조사", :collection => Camera::COMPANIES %>
-			<%= f.association :class_range, label: "클래스" %>
-			<%= f.input :release_date, label: "출시해", start_year: 1991, end_year: Date.today.year, discard_month: true, discard_hour: true, discard_minute: true %>
-			<%= f.input :far_more_info, label: "추가정보", input_html: { rows: 5, class: "fs12" } %>
+			<%= f.input :name2, input_html: { class: "hleft" }, label: "제품명2 / 제품명3" %>
+			<%= f.input :name3, input_html: { class: "hright" }, label: false %>
+			<%= f.input :company, label: "제조사", input_html: { class: "mleft" }, label: "제조사 / 마운트", :collection => Camera::COMPANIES %>
+			<%= f.input :mount, label: "마운트", :collection => Camera::MOUNTS, input_html: { class: "mright" }, label: false %>
+			<%= f.input :release_date, start_year: 1991, end_year: Date.today.year, discard_month: true, discard_hour: true, discard_minute: true, input_html: { class: "mleft" }, label: "출시해 / 클래스" %>
+			<%= f.association :class_range, input_html: { class: "mright" }, wrapper_html: { class: "mb20" }, label: false %>
+			<%= @camera.image.present? ? image_tag(@camera.image_url(:normal)) : image_tag("noimage180.png")%>
+			<%= f.input :image, :as => :file %>
 		</td>
 		<td>
 			<%= f.input :sensor_size, label: "센서크기", :collection => Camera::SENSORS %>
 			<%= f.input :sensor_type, label: "센서종류", :collection => [:CMOS, :CCD, :LBCAST, :"2 CCD", :"3 CCD", :SuperCCD, :"Foveon X3"] %>
-			<%= f.input :sensor_pixel, label: "유효픽셀" %>
-			<%= f.input :image_processor, label: "이미징엔진" %>
-			<br>
-			<%= f.input :metering, label: "측광" %>
-			<br>
-			<%= f.input :iso_low, label: "최저ISO" %>
-			<%= f.input :iso_high, label: "최대ISO" %>
-			<br>
-			<%= f.input :shutter_speed, label: "최대셔터속도" %>
-			<%= f.input :fps, label: "연사속도" %>
+			<%= f.input :sensor_pixel, input_html: { class: "hleft" }, label: "유효픽셀 / 이미징 엔진" %>
+			<%= f.input :image_processor, input_html: { class: "hright" }, label: false %>
+			<%= f.input :metering, label: "측광", wrapper_html: { class: "mt20" } %>
+			<%= f.input :iso_low, input_html: { class: "hleft" }, wrapper_html: { class: "mt20" }, label: "최저ISO / 최대 ISO" %>
+			<%= f.input :iso_high, input_html: { class: "hright" }, label: false %>
+			<%= f.input :shutter_speed, input_html: { class: "hleft" }, wrapper_html: { class: "mt20" }, label: "최대셔터속도/sec | 연사속도fps" %>
+			<%= f.input :fps, input_html: { class: "hright" }, label: false %>
 		</td>
 		<td>
 			<%= f.input :af_sensor, label: "AF센서" %>
-			<%= f.input :af_points_total, label: "측거점 수(전체)" %>
-			<%= f.input :af_points_cross, label: "측거점 수(크로스)" %>
-			<br>
-			<%= f.input :mirror_type, label: "미러 방식", :collection => Camera::MIRRORTYPES %>
-			<%= f.input :finder_coverage, label: "시야율%" %>
-			<%= f.input :finder_magnify, label: "확대율" %>
-			<br>
-			<%= f.input :lcd_size, label: "화면크기" %>
-			<%= f.input :lcd_pixel, label: "화면픽셀" %>
+			<%= f.input :af_points_total, input_html: { class: "hleft" }, label: "측거점 수(전체/크로스)" %>
+			<%= f.input :af_points_cross, input_html: { class: "hright" }, label: false %>
+			<%= f.input :mirror_type, label: "미러 방식", wrapper_html: { class: "mt20" }, :collection => Camera::MIRRORTYPES %>
+			<%= f.input :finder_coverage, input_html: { class: "hleft" }, label: "시야율% / 확대율x" %>
+			<%= f.input :finder_magnify, input_html: { class: "hright" }, label: false %>
+			<%= f.input :lcd_size, label: "화면크기", input_html: { class: "hleft" }, wrapper_html: { class: "mt20" }, label: "화면 크기 / 화면 픽셀" %>
+			<%= f.input :lcd_pixel, label: "화면픽셀", input_html: { class: "hright" }, label: false %>
 			<%= f.input :lcd_type, label: "화면형태", :collection => [:"Normal", :"Tilt", :"Tilt & Swivel"] %>
 			<%= f.input :lcd_etc, label: "화면기타" %>
 		</td>
 		<td>
-			<%= f.input :v4000fps %>
-			<%= f.input :v4000scan, :collection => [:progressive, :interlaced] %>
-			<%= f.input :v1080fps %>
-			<%= f.input :v1080scan, :collection => [:progressive, :interlaced] %>
-			<%= f.input :v720fps %>
-			<%= f.input :v720scan, :collection => [:progressive, :interlaced] %>
+			<%= f.input :v4000fps, input_html: { class: "vleft" }, label: "4K fps/scan" %>
+			<%= f.input :v4000scan, :collection => [:progressive, :interlaced], input_html: { class: "vright" }, label: false %>
+			<%= f.input :v1080fps, input_html: { class: "vleft" }, label: "1080 fps/scan" %>
+			<%= f.input :v1080scan, :collection => [:progressive, :interlaced], input_html: { class: "vright" }, label: false %>
+			<%= f.input :v720fps, input_html: { class: "vleft" }, label: "720 fps/scan" %>
+			<%= f.input :v720scan, :collection => [:progressive, :interlaced], input_html: { class: "vright" }, label: false %>
 			<%= f.input :video_format %>
-			<br>
-			<%= f.input :shake_reduction, label: "손떨림방지", label_html: { :class => "di ml5" } %>
-			<br>
-			<%= f.input :liveview, label: "라이브뷰", label_html: { :class => "di ml5" } %>
-			<br>
-			<%= f.input :sealing, label: "방진방습", label_html: { :class => "di ml5" } %>
+			<%= f.input :shake_reduction, label: "손떨림방지", label_html: { :class => "di ml5" }, wrapper_html: { class: "mt20" } %>
+			<%= f.input :liveview, label: "라이브뷰", label_html: { :class => "di ml5" }, wrapper_html: { class: "mt10" } %>
+			<%= f.input :sealing, label: "방진방습", label_html: { :class => "di ml5" }, wrapper_html: { class: "mt10" } %>
+			<%= f.input :far_more_info, label: "추가정보", input_html: { rows: 5, class: "fs12" }, wrapper_html: { class: "mt20" } %>
 		</td>
 		<td>
-			<%= f.input :storage, label: "저장소" %>
-			<%= f.input :power, label: "전원" %>
-			<br>
-			<%= f.input :d_width, label: "가로" %>
-			<%= f.input :d_height, label: "세로" %>
-			<%= f.input :d_depth, label: "두께" %>
-			<%= f.input :weight, label: "무게" %>
-			<br>
+			<%= f.input :storage, input_html: { class: "hleft" }, label: "저장소 / 전원" %>
+			<%= f.input :power, input_html: { class: "hright" }, label: false %>
+			<%= f.input :d_width, input_html: { class: "hleft" }, label: "가로 / 세로" %>
+			<%= f.input :d_height, input_html: { class: "hright" }, label: false %>
+			<%= f.input :d_depth, input_html: { class: "hleft" }, label: "두께 / 무게" %>
+			<%= f.input :weight, input_html: { class: "hright" }, label: false %>
+			<%= f.input :more_info, label: "특이사항", input_html: { rows: 3, class: "fs12" }, wrapper_html: { class: "mt20" } %>
 			<%= f.input :status, label: "상태", :collection => [:pending, :running, :hidden] %>
-			<%= f.input :more_info, label: "특이사항", input_html: { rows: 3, class: "fs12" } %>
-			<div class="actions">
+			<div class="actions mt20">
 				<%= f.submit "Submit", :class => "btn btn-success" %>
 			</div>
 		</td>

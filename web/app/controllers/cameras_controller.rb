@@ -17,7 +17,18 @@ class CamerasController < ApplicationController
 			s = s.of_showing.order('id DESC')
 		end
 	  @cameras  = s.group_by { |camera| camera.release_date.strftime("%Y") }.sort {|a, b| a[0] <=> b[0] }
-		@comments = Comment.page(params[:page]).per(20)
+		@comments = Comment.page(params[:page]).per(4)
+		
+		# total_count = Comment.count
+		# page_per = 20
+		# offset = total_count % page_per
+		# page = params[:page] : 1
+		# 
+		# cstart = -(page_per*page)
+		# cend 	 = -(page_per*(page-1))-1
+		# @comments = Comment.all[cstart..cend]
+		
+		
 		@comment 	= Comment.new
 		@user 		= User.new
 	end
