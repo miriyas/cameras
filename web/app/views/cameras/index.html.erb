@@ -6,13 +6,13 @@
 	<p>이 페이지는 현재 지속적으로 개선이 진행중입니다.<br>문의사항, 수정사항, <span class="ul">찬양할 점</span>이 있으면 아래에 댓글로 남겨주세요.</p>
 	<table class="mac">
 		<tr>
-			<td>
+			<td class="vat">
 				<ul>
 					<strong>현재 진척 상황</strong>
 					<li><%= nl2li(SiteNotice.last.worked) %></li>
 				</ul>
 			</td>
-			<td>
+			<td class="vat">
 				<ul>
 					<strong>조만간 할 일</strong>
 					<li><%= nl2li(SiteNotice.last.todo) %></li>
