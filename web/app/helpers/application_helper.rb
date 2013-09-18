@@ -131,19 +131,20 @@ module ApplicationHelper
     
     def item(caption, path, options = {})
       anchor_option = options.delete(:anchor_option) || {}
+			company = path.sub('/?company=','')
       if options[:icon].present?
         caption = "<i class=\"#{options.delete(:icon)}#{ ' icon-white' if options[:current] }\"></i> #{caption}".html_safe
       end
 
       if options[:count].present?
-				if caption == "Sony/Minolta"
+				if company == "소니/미놀타"
 					cc = Camera.where(company: "sony").count + Camera.where(company: "minolta").count					
 	        caption = "#{caption} <span class=\"num_badge\">(#{cc})</span>".html_safe
-				elsif caption == "etc."
-					cc = Camera.where(company: "leica").count + Camera.where(company: "fujifilm").count + Camera.where(company: "kodak").count + Camera.where(company: "sigma").count
+				elsif company == "etc."
+					cc = Camera.where(company: "leica").count + Camera.where(company: "contax").count + Camera.where(company: "sigma").count
 					caption = "#{caption} <span class=\"num_badge\">(#{cc})</span>".html_safe
 				else
-	        caption = "#{caption} <span class=\"num_badge\">(#{Camera.where(company: caption).count})</span>".html_safe
+	        caption = "#{caption} <span class=\"num_badge\">(#{Camera.where(company: company).count})</span>".html_safe
 				end
       end      
       @items << [@template.link_to(caption, path, anchor_option), options]
