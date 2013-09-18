@@ -137,7 +137,8 @@ module ApplicationHelper
       end
 
       if options[:count].present?
-				if company == "소니/미놀타"
+				if company == "sony/minolta"
+					p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 					cc = Camera.where(company: "sony").count + Camera.where(company: "minolta").count					
 	        caption = "#{caption} <span class=\"num_badge\">(#{cc})</span>".html_safe
 				elsif company == "etc"
