@@ -140,7 +140,7 @@ module ApplicationHelper
 				if company == "소니/미놀타"
 					cc = Camera.where(company: "sony").count + Camera.where(company: "minolta").count					
 	        caption = "#{caption} <span class=\"num_badge\">(#{cc})</span>".html_safe
-				elsif company == "etc."
+				elsif company == "기타"
 					cc = Camera.where(company: "leica").count + Camera.where(company: "contax").count + Camera.where(company: "sigma").count
 					caption = "#{caption} <span class=\"num_badge\">(#{cc})</span>".html_safe
 				else
