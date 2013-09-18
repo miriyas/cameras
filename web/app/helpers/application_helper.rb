@@ -131,14 +131,13 @@ module ApplicationHelper
     
     def item(caption, path, options = {})
       anchor_option = options.delete(:anchor_option) || {}
-			company = path.sub('/?company=','')
+			company = URI.unescape(path.sub('/?company=',''))
       if options[:icon].present?
         caption = "<i class=\"#{options.delete(:icon)}#{ ' icon-white' if options[:current] }\"></i> #{caption}".html_safe
       end
 
       if options[:count].present?
 				if company == "sony/minolta"
-					p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 					cc = Camera.where(company: "sony").count + Camera.where(company: "minolta").count					
 	        caption = "#{caption} <span class=\"num_badge\">(#{cc})</span>".html_safe
 				elsif company == "etc"
