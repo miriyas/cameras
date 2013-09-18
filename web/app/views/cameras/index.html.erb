@@ -25,16 +25,16 @@
 	<div class="company">
 		<%= navigation_tag :class => "nav nav-pills fl" do |m| %>
 		  <%= m.item "전체", root_path, :current => params[:company].blank? %>
-		  <%= m.item "캐논", root_path(company: "canon"), :current => params[:company] == "canon"#, :count => true %>
-		  <%= m.item "니콘", root_path(company: "nikon"), :current => params[:company] == "nikon"#, :count => true %>
-		  <%= m.item "소니/미놀타", root_path(company: "sony/minolta"), :current => params[:company] == "sony/minolta"#, :count => true %>
-		  <%= m.item "올림푸스", root_path(company: "olympus"), :current => params[:company] == "olympus"#, :count => true %>
-		  <%= m.item "펜탁스", root_path(company: "pentax"), :current => params[:company] == "pentax"#, :count => true %>
-		  <%= m.item "코닥", root_path(company: "kodak"), :current => params[:company] == "kodak"#, :count => true %>
-		  <%= m.item "파나소닉", root_path(company: "panasonic"), :current => params[:company] == "panasonic"#, :count => true %>
-		  <%= m.item "삼성", root_path(company: "samsung"), :current => params[:company] == "samsung"#, :count => true %>
-		  <%= m.item "후지필름", root_path(company: "fujifilm"), :current => params[:company] == "fujifilm"#, :count => true %>
-		  <%= m.item "기타", root_path(company: "etc"), :current => params[:company] == "etc"#, :count => true %>
+		  <%= m.item "캐논", root_path(company: "canon"), :current => params[:company] == "canon" %>
+		  <%= m.item "니콘", root_path(company: "nikon"), :current => params[:company] == "nikon" %>
+		  <%= m.item "소니/미놀타", root_path(company: "sony/minolta"), :current => params[:company] == "sony/minolta" %>
+		  <%= m.item "올림푸스", root_path(company: "olympus"), :current => params[:company] == "olympus" %>
+		  <%= m.item "펜탁스", root_path(company: "pentax"), :current => params[:company] == "pentax" %>
+		  <%= m.item "코닥", root_path(company: "kodak"), :current => params[:company] == "kodak" %>
+		  <%= m.item "파나소닉", root_path(company: "panasonic"), :current => params[:company] == "panasonic" %>
+		  <%= m.item "삼성", root_path(company: "samsung"), :current => params[:company] == "samsung" %>
+		  <%= m.item "후지필름", root_path(company: "fujifilm"), :current => params[:company] == "fujifilm" %>
+		  <%= m.item "기타", root_path(company: "etc"), :current => params[:company] == "etc" %>
 		<% end %>
 	</div>
 </div>
