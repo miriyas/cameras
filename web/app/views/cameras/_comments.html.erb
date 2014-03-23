@@ -2,7 +2,7 @@
 	<%= paginate @comments, :theme => 'twitter-bootstrap' %>
 </div>
 <ul>
-	<% @comments.each do |comment| %>
+	<% @comments.reverse_each do |comment| %>
 		<li class="comment <%= "admin" if comment.user.role == "admin" %>">
 			<div class="top">
 				<div class="user">
